@@ -160,6 +160,52 @@
         .image-overlay {
             background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.6) 100%);
         }
+
+        /* Language selector */
+        .lang-selector {
+            position: relative;
+        }
+
+        .lang-dropdown {
+            display: none;
+            position: absolute;
+            top: 100%;
+            right: 0;
+            margin-top: 0.5rem;
+            background: white;
+            border-radius: 0.75rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            min-width: 140px;
+            z-index: 100;
+        }
+
+        .lang-dropdown.show {
+            display: block;
+            animation: fadeIn 0.2s ease;
+        }
+
+        .lang-option {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem 1rem;
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+
+        .lang-option:hover {
+            background: #f5f5f4;
+        }
+
+        .lang-option.active {
+            background: #314c45;
+            color: white;
+        }
+
+        .lang-flag {
+            font-size: 1.25rem;
+        }
     </style>
 </head>
 
@@ -172,6 +218,32 @@
         <div class="absolute inset-0 opacity-20">
             <img src="https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?w=1200&q=80" alt="Ocean background"
                 class="w-full h-full object-cover">
+        </div>
+
+        <!-- Language Selector on Splash -->
+        <div class="absolute top-6 right-6 z-20">
+            <div class="lang-selector">
+                <button id="langBtnSplash" onclick="toggleLangDropdown('splash')"
+                    class="flex items-center gap-2 bg-white/20 hover:bg-white/30 backdrop-blur-md text-white px-4 py-2 rounded-full transition-all duration-300">
+                    <span id="currentFlagSplash" class="lang-flag">🇧🇷</span>
+                    <span id="currentLangSplash" class="text-sm font-medium">PT</span>
+                    <i class="fa-solid fa-chevron-down text-xs"></i>
+                </button>
+                <div id="langDropdownSplash" class="lang-dropdown">
+                    <div class="lang-option active" data-lang="pt">
+                        <span class="lang-flag">🇧🇷</span>
+                        <span>Português</span>
+                    </div>
+                    <div class="lang-option" data-lang="en">
+                        <span class="lang-flag">🇺🇸</span>
+                        <span>English</span>
+                    </div>
+                    <div class="lang-option" data-lang="es">
+                        <span class="lang-flag">🇪🇸</span>
+                        <span>Español</span>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <!-- Content -->
@@ -188,7 +260,7 @@
             <p class="text-xl text-white/90 font-light mb-2">Angra dos Reis</p>
 
             <!-- Slogan -->
-            <p class="text-white/80 text-lg italic mt-6 max-w-xs mx-auto">
+            <p class="text-white/80 text-lg italic mt-6 max-w-xs mx-auto" data-i18n="slogan">
                 "Sua casa no paraíso, sobre as águas de Angra."
             </p>
 
@@ -196,7 +268,7 @@
             <button id="enterBtn" class="pulse-btn mt-12 px-10 py-4 bg-white text-primary font-semibold text-lg rounded-full 
                            shadow-xl hover:bg-stone-100 transition-all duration-300 flex items-center gap-3 mx-auto">
                 <i class="fa-solid fa-compass"></i>
-                Acessar Guia
+                <span data-i18n="enterBtn">Acessar Guia</span>
             </button>
 
             <!-- Location -->
@@ -217,10 +289,34 @@
                 class="w-full h-full object-cover">
             <div class="absolute inset-0 image-overlay"></div>
 
+            <!-- Language Selector on Header -->
+            <div class="absolute top-4 right-4 z-20">
+                <div class="lang-selector">
+                    <button id="langBtnHeader" onclick="toggleLangDropdown('header')"
+                        class="flex items-center gap-2 bg-black/30 hover:bg-black/40 backdrop-blur-md text-white px-3 py-2 rounded-full transition-all duration-300">
+                        <span id="currentFlagHeader" class="lang-flag">🇧🇷</span>
+                        <i class="fa-solid fa-chevron-down text-xs"></i>
+                    </button>
+                    <div id="langDropdownHeader" class="lang-dropdown">
+                        <div class="lang-option active" data-lang="pt">
+                            <span class="lang-flag">🇧🇷</span>
+                            <span>Português</span>
+                        </div>
+                        <div class="lang-option" data-lang="en">
+                            <span class="lang-flag">🇺🇸</span>
+                            <span>English</span>
+                        </div>
+                        <div class="lang-option" data-lang="es">
+                            <span class="lang-flag">🇪🇸</span>
+                            <span>Español</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <!-- Header Content -->
             <div class="absolute inset-0 flex flex-col justify-end p-6 text-white">
-                <img src="https://via.placeholder.com/60x60/ffffff/314c45?text=CF" alt="Logo Casa Flutuante"
-                    class="w-14 h-14 rounded-xl shadow-lg mb-3">
+                <img src="image_7e0c4a.png" alt="Logo Casa Flutuante" class="w-14 h-14 rounded-xl shadow-lg mb-3">
                 <h1 class="font-display text-3xl font-bold drop-shadow-lg">Casa Flutuante Angra</h1>
                 <p class="text-white/90 flex items-center gap-2 mt-1">
                     <i class="fa-solid fa-location-dot text-sm"></i>
@@ -240,7 +336,7 @@
                         </div>
                         <div>
                             <p class="text-xs text-gray-500 uppercase tracking-wide">Wi-Fi Starlink</p>
-                            <p class="font-semibold text-primary">[Rede da Casa]</p>
+                            <p class="font-semibold text-primary" data-i18n="wifiNetwork">[Rede da Casa]</p>
                         </div>
                     </div>
                     <div class="flex items-center gap-2 bg-stone-100 rounded-xl p-3">
@@ -258,7 +354,7 @@
                         <div class="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center">
                             <i class="fa-solid fa-clock text-primary text-lg"></i>
                         </div>
-                        <p class="text-xs text-gray-500 uppercase tracking-wide">Horários</p>
+                        <p class="text-xs text-gray-500 uppercase tracking-wide" data-i18n="schedules">Horários</p>
                     </div>
                     <div class="space-y-2">
                         <div class="flex items-center justify-between bg-green-50 rounded-xl px-3 py-2">
@@ -282,7 +378,7 @@
                     <div class="w-12 h-12 bg-red-50 rounded-2xl flex items-center justify-center mx-auto mb-3">
                         <i class="fa-solid fa-clipboard-list text-red-500 text-xl"></i>
                     </div>
-                    <span class="font-medium text-gray-700 text-sm">Regras</span>
+                    <span class="font-medium text-gray-700 text-sm" data-i18n="rulesBtn">Regras</span>
                 </button>
 
                 <button onclick="scrollToSection('guia')"
@@ -290,7 +386,7 @@
                     <div class="w-12 h-12 bg-blue-50 rounded-2xl flex items-center justify-center mx-auto mb-3">
                         <i class="fa-solid fa-map-location-dot text-blue-500 text-xl"></i>
                     </div>
-                    <span class="font-medium text-gray-700 text-sm">Guia</span>
+                    <span class="font-medium text-gray-700 text-sm" data-i18n="guideBtn">Guia</span>
                 </button>
 
                 <button onclick="scrollToSection('contato')"
@@ -298,44 +394,45 @@
                     <div class="w-12 h-12 bg-green-50 rounded-2xl flex items-center justify-center mx-auto mb-3">
                         <i class="fa-brands fa-whatsapp text-green-500 text-xl"></i>
                     </div>
-                    <span class="font-medium text-gray-700 text-sm">Contato</span>
+                    <span class="font-medium text-gray-700 text-sm" data-i18n="contactBtn">Contato</span>
                 </button>
             </div>
         </section>
 
         <!-- ===== COMODIDADES ===== -->
         <section class="px-4 mt-8">
-            <h2 class="font-display text-2xl font-semibold text-primary mb-4">Comodidades</h2>
+            <h2 class="font-display text-2xl font-semibold text-primary mb-4" data-i18n="amenitiesTitle">Comodidades
+            </h2>
             <div class="flex gap-3 overflow-x-auto hide-scrollbar pb-2">
                 <div
                     class="flex-shrink-0 bg-white rounded-2xl px-5 py-4 shadow-md border border-stone-100 text-center min-w-[100px]">
                     <i class="fa-solid fa-utensils text-primary text-2xl mb-2"></i>
-                    <p class="text-xs text-gray-600">Cozinha<br>Completa</p>
+                    <p class="text-xs text-gray-600" data-i18n="amenityKitchen">Cozinha<br>Completa</p>
                 </div>
                 <div
                     class="flex-shrink-0 bg-white rounded-2xl px-5 py-4 shadow-md border border-stone-100 text-center min-w-[100px]">
                     <i class="fa-solid fa-fire text-primary text-2xl mb-2"></i>
-                    <p class="text-xs text-gray-600">Churras-<br>queira</p>
+                    <p class="text-xs text-gray-600" data-i18n="amenityBBQ">Churras-<br>queira</p>
                 </div>
                 <div
                     class="flex-shrink-0 bg-white rounded-2xl px-5 py-4 shadow-md border border-stone-100 text-center min-w-[100px]">
                     <i class="fa-solid fa-person-swimming text-primary text-2xl mb-2"></i>
-                    <p class="text-xs text-gray-600">SUP /<br>Caiaque</p>
+                    <p class="text-xs text-gray-600" data-i18n="amenitySUP">SUP /<br>Caiaque</p>
                 </div>
                 <div
                     class="flex-shrink-0 bg-white rounded-2xl px-5 py-4 shadow-md border border-stone-100 text-center min-w-[100px]">
                     <i class="fa-solid fa-snowflake text-primary text-2xl mb-2"></i>
-                    <p class="text-xs text-gray-600">Ar<br>Condicionado</p>
+                    <p class="text-xs text-gray-600" data-i18n="amenityAC">Ar<br>Condicionado</p>
                 </div>
                 <div
                     class="flex-shrink-0 bg-white rounded-2xl px-5 py-4 shadow-md border border-stone-100 text-center min-w-[100px]">
                     <i class="fa-solid fa-tv text-primary text-2xl mb-2"></i>
-                    <p class="text-xs text-gray-600">Smart<br>TV</p>
+                    <p class="text-xs text-gray-600" data-i18n="amenityTV">Smart<br>TV</p>
                 </div>
                 <div
                     class="flex-shrink-0 bg-white rounded-2xl px-5 py-4 shadow-md border border-stone-100 text-center min-w-[100px]">
                     <i class="fa-solid fa-solar-panel text-primary text-2xl mb-2"></i>
-                    <p class="text-xs text-gray-600">Energia<br>Solar</p>
+                    <p class="text-xs text-gray-600" data-i18n="amenitySolar">Energia<br>Solar</p>
                 </div>
             </div>
         </section>
@@ -344,7 +441,7 @@
         <section id="regras" class="px-4 mt-10 scroll-mt-4">
             <h2 class="font-display text-2xl font-semibold text-primary mb-4 flex items-center gap-3">
                 <i class="fa-solid fa-clipboard-list text-red-500"></i>
-                Regras da Casa
+                <span data-i18n="rulesTitle">Regras da Casa</span>
             </h2>
             <div class="bg-white rounded-2xl shadow-lg border border-stone-100 overflow-hidden">
                 <!-- Rule items -->
@@ -352,42 +449,43 @@
                     <div class="w-10 h-10 bg-amber-100 rounded-xl flex items-center justify-center flex-shrink-0">
                         <i class="fa-solid fa-users text-amber-600"></i>
                     </div>
-                    <p class="text-gray-700">Máximo <strong>4 hóspedes</strong></p>
+                    <p class="text-gray-700" data-i18n="ruleGuests">Máximo <strong>4 hóspedes</strong></p>
                 </div>
 
                 <div class="flex items-center gap-4 p-4 border-b border-stone-100">
                     <div class="w-10 h-10 bg-red-100 rounded-xl flex items-center justify-center flex-shrink-0">
                         <i class="fa-solid fa-champagne-glasses text-red-600"></i>
                     </div>
-                    <p class="text-gray-700"><strong>Sem festas</strong> ou eventos</p>
+                    <p class="text-gray-700" data-i18n="ruleParties"><strong>Sem festas</strong> ou eventos</p>
                 </div>
 
                 <div class="flex items-center gap-4 p-4 border-b border-stone-100">
                     <div class="w-10 h-10 bg-orange-100 rounded-xl flex items-center justify-center flex-shrink-0">
                         <i class="fa-solid fa-paw text-orange-600"></i>
                     </div>
-                    <p class="text-gray-700"><strong>Sem pets</strong></p>
+                    <p class="text-gray-700" data-i18n="rulePets"><strong>Sem pets</strong></p>
                 </div>
 
                 <div class="flex items-center gap-4 p-4 border-b border-stone-100">
                     <div class="w-10 h-10 bg-gray-100 rounded-xl flex items-center justify-center flex-shrink-0">
                         <i class="fa-solid fa-ban-smoking text-gray-600"></i>
                     </div>
-                    <p class="text-gray-700"><strong>Proibido fumar</strong> na área interna</p>
+                    <p class="text-gray-700" data-i18n="ruleSmoking"><strong>Proibido fumar</strong> na área interna</p>
                 </div>
 
                 <div class="flex items-center gap-4 p-4 border-b border-stone-100 bg-blue-50">
                     <div class="w-10 h-10 bg-blue-200 rounded-xl flex items-center justify-center flex-shrink-0">
                         <i class="fa-solid fa-life-ring text-blue-700"></i>
                     </div>
-                    <p class="text-blue-900"><strong>Obrigatório colete salva-vidas</strong> na água</p>
+                    <p class="text-blue-900" data-i18n="ruleLifeVest"><strong>Obrigatório colete salva-vidas</strong> na
+                        água</p>
                 </div>
 
                 <div class="flex items-center gap-4 p-4">
                     <div class="w-10 h-10 bg-purple-100 rounded-xl flex items-center justify-center flex-shrink-0">
                         <i class="fa-solid fa-moon text-purple-600"></i>
                     </div>
-                    <p class="text-gray-700"><strong>Silêncio</strong> após as 22h</p>
+                    <p class="text-gray-700" data-i18n="ruleSilence"><strong>Silêncio</strong> após as 22h</p>
                 </div>
             </div>
         </section>
@@ -396,13 +494,13 @@
         <section id="guia" class="px-4 mt-10 scroll-mt-4">
             <h2 class="font-display text-2xl font-semibold text-primary mb-4 flex items-center gap-3">
                 <i class="fa-solid fa-map-location-dot text-blue-500"></i>
-                Guia Local
+                <span data-i18n="localGuideTitle">Guia Local</span>
             </h2>
 
             <!-- Passeios -->
             <h3 class="text-lg font-semibold text-gray-700 mb-3 flex items-center gap-2">
                 <i class="fa-solid fa-sailboat text-primary"></i>
-                Passeios
+                <span data-i18n="toursTitle">Passeios</span>
             </h3>
             <div class="flex gap-4 overflow-x-auto hide-scrollbar pb-4">
                 <!-- Card Lancha -->
@@ -411,10 +509,12 @@
                         <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=600&q=80"
                             alt="Passeio de Lancha" class="w-full h-full object-cover">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-                        <span class="absolute bottom-3 left-3 text-white font-semibold">Lancha</span>
+                        <span class="absolute bottom-3 left-3 text-white font-semibold"
+                            data-i18n="tourBoat">Lancha</span>
                     </div>
                     <div class="p-4">
-                        <p class="text-sm text-gray-600">Volta à Ilha Grande, Lagoa Azul e praias paradisíacas.</p>
+                        <p class="text-sm text-gray-600" data-i18n="tourBoatDesc">Volta à Ilha Grande, Lagoa Azul e
+                            praias paradisíacas.</p>
                     </div>
                 </div>
 
@@ -424,10 +524,12 @@
                         <img src="https://images.unsplash.com/photo-1551632811-561732d1e306?w=600&q=80" alt="Trilhas"
                             class="w-full h-full object-cover">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-                        <span class="absolute bottom-3 left-3 text-white font-semibold">Trilhas Guiadas</span>
+                        <span class="absolute bottom-3 left-3 text-white font-semibold" data-i18n="tourHiking">Trilhas
+                            Guiadas</span>
                     </div>
                     <div class="p-4">
-                        <p class="text-sm text-gray-600">Explore a Mata Atlântica com guias experientes.</p>
+                        <p class="text-sm text-gray-600" data-i18n="tourHikingDesc">Explore a Mata Atlântica com guias
+                            experientes.</p>
                     </div>
                 </div>
 
@@ -437,10 +539,12 @@
                         <img src="https://images.unsplash.com/photo-1544551763-77ef2d0cfc6c?w=600&q=80" alt="Mergulho"
                             class="w-full h-full object-cover">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-                        <span class="absolute bottom-3 left-3 text-white font-semibold">Mergulho</span>
+                        <span class="absolute bottom-3 left-3 text-white font-semibold"
+                            data-i18n="tourDiving">Mergulho</span>
                     </div>
                     <div class="p-4">
-                        <p class="text-sm text-gray-600">Descubra a rica vida marinha de Angra.</p>
+                        <p class="text-sm text-gray-600" data-i18n="tourDivingDesc">Descubra a rica vida marinha de
+                            Angra.</p>
                     </div>
                 </div>
 
@@ -450,10 +554,12 @@
                         <img src="https://images.unsplash.com/photo-1534190760961-74e8c1c5c3da?w=600&q=80" alt="Vela"
                             class="w-full h-full object-cover">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-                        <span class="absolute bottom-3 left-3 text-white font-semibold">Vela</span>
+                        <span class="absolute bottom-3 left-3 text-white font-semibold"
+                            data-i18n="tourSailing">Vela</span>
                     </div>
                     <div class="p-4">
-                        <p class="text-sm text-gray-600">Navegue pelas águas calmas da região.</p>
+                        <p class="text-sm text-gray-600" data-i18n="tourSailingDesc">Navegue pelas águas calmas da
+                            região.</p>
                     </div>
                 </div>
             </div>
@@ -461,12 +567,12 @@
             <!-- Gastronomia -->
             <h3 class="text-lg font-semibold text-gray-700 mt-6 mb-3 flex items-center gap-2">
                 <i class="fa-solid fa-utensils text-primary"></i>
-                Gastronomia
+                <span data-i18n="gastronomyTitle">Gastronomia</span>
             </h3>
 
             <div class="bg-amber-50 border border-amber-200 rounded-xl p-3 mb-4 flex items-center gap-3">
                 <i class="fa-solid fa-ship text-amber-600"></i>
-                <p class="text-sm text-amber-800">Os restaurantes buscam de barco! 🚤</p>
+                <p class="text-sm text-amber-800" data-i18n="restaurantPickup">Os restaurantes buscam de barco! 🚤</p>
             </div>
 
             <div class="space-y-3">
@@ -478,7 +584,8 @@
                     </div>
                     <div>
                         <h4 class="font-semibold text-gray-800">Reis & Magos</h4>
-                        <p class="text-sm text-gray-500">Especialidade em frutos do mar</p>
+                        <p class="text-sm text-gray-500" data-i18n="restaurantSeafood">Especialidade em frutos do mar
+                        </p>
                         <div class="flex items-center gap-1 mt-1">
                             <i class="fa-solid fa-star text-yellow-400 text-xs"></i>
                             <i class="fa-solid fa-star text-yellow-400 text-xs"></i>
@@ -497,7 +604,7 @@
                     </div>
                     <div>
                         <h4 class="font-semibold text-gray-800">Almirantado</h4>
-                        <p class="text-sm text-gray-500">Gastronomia sofisticada</p>
+                        <p class="text-sm text-gray-500" data-i18n="restaurantSophisticated">Gastronomia sofisticada</p>
                         <div class="flex items-center gap-1 mt-1">
                             <i class="fa-solid fa-star text-yellow-400 text-xs"></i>
                             <i class="fa-solid fa-star text-yellow-400 text-xs"></i>
@@ -512,15 +619,15 @@
             <!-- Mercado -->
             <h3 class="text-lg font-semibold text-gray-700 mt-6 mb-3 flex items-center gap-2">
                 <i class="fa-solid fa-basket-shopping text-primary"></i>
-                Mercado
+                <span data-i18n="marketTitle">Mercado</span>
             </h3>
             <div class="bg-green-50 border border-green-200 rounded-2xl p-4 flex items-center gap-4">
                 <div class="w-12 h-12 bg-green-200 rounded-xl flex items-center justify-center">
                     <i class="fa-solid fa-truck text-green-700 text-xl"></i>
                 </div>
                 <div>
-                    <p class="font-medium text-green-800">Entrega na casa!</p>
-                    <p class="text-sm text-green-600">Peça pelo WhatsApp do anfitrião</p>
+                    <p class="font-medium text-green-800" data-i18n="marketDelivery">Entrega na casa!</p>
+                    <p class="text-sm text-green-600" data-i18n="marketWhatsApp">Peça pelo WhatsApp do anfitrião</p>
                 </div>
             </div>
         </section>
@@ -529,7 +636,7 @@
         <section id="contato" class="px-4 mt-10 mb-8 scroll-mt-4">
             <h2 class="font-display text-2xl font-semibold text-primary mb-4 flex items-center gap-3">
                 <i class="fa-solid fa-address-book text-green-500"></i>
-                Contato
+                <span data-i18n="contactTitle">Contato</span>
             </h2>
 
             <div class="bg-white rounded-2xl shadow-lg p-6 text-center">
@@ -537,18 +644,18 @@
                     <i class="fa-solid fa-user text-primary text-3xl"></i>
                 </div>
                 <h3 class="text-xl font-semibold text-gray-800 mb-1">Carlos</h3>
-                <p class="text-gray-500 mb-6">Seu anfitrião</p>
+                <p class="text-gray-500 mb-6" data-i18n="hostLabel">Seu anfitrião</p>
 
                 <a href="https://wa.me/5521972004050" target="_blank" class="inline-flex items-center justify-center gap-3 w-full bg-green-500 hover:bg-green-600 
                           text-white font-semibold text-lg py-4 px-6 rounded-2xl shadow-lg 
                           transition-all duration-300 active:scale-95">
                     <i class="fa-brands fa-whatsapp text-2xl"></i>
-                    Chamar no WhatsApp
+                    <span data-i18n="whatsappBtn">Chamar no WhatsApp</span>
                 </a>
 
                 <p class="mt-4 text-sm text-gray-400">
                     <i class="fa-solid fa-clock mr-1"></i>
-                    Responde rapidamente
+                    <span data-i18n="responseTime">Responde rapidamente</span>
                 </p>
             </div>
         </section>
@@ -560,25 +667,25 @@
         <div class="flex items-center justify-around py-2">
             <button onclick="scrollToTop()" class="flex flex-col items-center py-2 px-4 text-primary">
                 <i class="fa-solid fa-house text-xl"></i>
-                <span class="text-xs mt-1 font-medium">Início</span>
+                <span class="text-xs mt-1 font-medium" data-i18n="navHome">Início</span>
             </button>
 
             <button onclick="scrollToSection('regras')"
                 class="flex flex-col items-center py-2 px-4 text-gray-400 hover:text-primary transition-colors">
                 <i class="fa-solid fa-clipboard-list text-xl"></i>
-                <span class="text-xs mt-1">Regras</span>
+                <span class="text-xs mt-1" data-i18n="navRules">Regras</span>
             </button>
 
             <button onclick="scrollToSection('guia')"
                 class="flex flex-col items-center py-2 px-4 text-gray-400 hover:text-primary transition-colors">
                 <i class="fa-solid fa-map text-xl"></i>
-                <span class="text-xs mt-1">Guia</span>
+                <span class="text-xs mt-1" data-i18n="navGuide">Guia</span>
             </button>
 
             <button onclick="scrollToSection('contato')"
                 class="flex flex-col items-center py-2 px-4 text-gray-400 hover:text-primary transition-colors">
                 <i class="fa-brands fa-whatsapp text-xl"></i>
-                <span class="text-xs mt-1">Contato</span>
+                <span class="text-xs mt-1" data-i18n="navContact">Contato</span>
             </button>
         </div>
     </nav>
@@ -592,6 +699,305 @@
 
     <!-- ========== JAVASCRIPT ========== -->
     <script>
+        // ==================== TRANSLATIONS ====================
+        const translations = {
+            pt: {
+                // Splash
+                slogan: '"Sua casa no paraíso, sobre as águas de Angra."',
+                enterBtn: 'Acessar Guia',
+
+                // Quick Access
+                wifiNetwork: '[Rede da Casa]',
+                schedules: 'Horários',
+
+                // Navigation Buttons
+                rulesBtn: 'Regras',
+                guideBtn: 'Guia',
+                contactBtn: 'Contato',
+
+                // Amenities
+                amenitiesTitle: 'Comodidades',
+                amenityKitchen: 'Cozinha<br>Completa',
+                amenityBBQ: 'Churras-<br>queira',
+                amenitySUP: 'SUP /<br>Caiaque',
+                amenityAC: 'Ar<br>Condicionado',
+                amenityTV: 'Smart<br>TV',
+                amenitySolar: 'Energia<br>Solar',
+
+                // Rules
+                rulesTitle: 'Regras da Casa',
+                ruleGuests: 'Máximo <strong>4 hóspedes</strong>',
+                ruleParties: '<strong>Sem festas</strong> ou eventos',
+                rulePets: '<strong>Sem pets</strong>',
+                ruleSmoking: '<strong>Proibido fumar</strong> na área interna',
+                ruleLifeVest: '<strong>Obrigatório colete salva-vidas</strong> na água',
+                ruleSilence: '<strong>Silêncio</strong> após as 22h',
+
+                // Local Guide
+                localGuideTitle: 'Guia Local',
+                toursTitle: 'Passeios',
+                tourBoat: 'Lancha',
+                tourBoatDesc: 'Volta à Ilha Grande, Lagoa Azul e praias paradisíacas.',
+                tourHiking: 'Trilhas Guiadas',
+                tourHikingDesc: 'Explore a Mata Atlântica com guias experientes.',
+                tourDiving: 'Mergulho',
+                tourDivingDesc: 'Descubra a rica vida marinha de Angra.',
+                tourSailing: 'Vela',
+                tourSailingDesc: 'Navegue pelas águas calmas da região.',
+
+                // Gastronomy
+                gastronomyTitle: 'Gastronomia',
+                restaurantPickup: 'Os restaurantes buscam de barco! 🚤',
+                restaurantSeafood: 'Especialidade em frutos do mar',
+                restaurantSophisticated: 'Gastronomia sofisticada',
+
+                // Market
+                marketTitle: 'Mercado',
+                marketDelivery: 'Entrega na casa!',
+                marketWhatsApp: 'Peça pelo WhatsApp do anfitrião',
+
+                // Contact
+                contactTitle: 'Contato',
+                hostLabel: 'Seu anfitrião',
+                whatsappBtn: 'Chamar no WhatsApp',
+                responseTime: 'Responde rapidamente',
+
+                // Bottom Nav
+                navHome: 'Início',
+                navRules: 'Regras',
+                navGuide: 'Guia',
+                navContact: 'Contato',
+
+                // Toast
+                toastCopied: 'Senha copiada!'
+            },
+            en: {
+                // Splash
+                slogan: '"Your home in paradise, over the waters of Angra."',
+                enterBtn: 'Access Guide',
+
+                // Quick Access
+                wifiNetwork: '[House Network]',
+                schedules: 'Schedules',
+
+                // Navigation Buttons
+                rulesBtn: 'Rules',
+                guideBtn: 'Guide',
+                contactBtn: 'Contact',
+
+                // Amenities
+                amenitiesTitle: 'Amenities',
+                amenityKitchen: 'Full<br>Kitchen',
+                amenityBBQ: 'BBQ<br>Grill',
+                amenitySUP: 'SUP /<br>Kayak',
+                amenityAC: 'Air<br>Conditioning',
+                amenityTV: 'Smart<br>TV',
+                amenitySolar: 'Solar<br>Energy',
+
+                // Rules
+                rulesTitle: 'House Rules',
+                ruleGuests: 'Maximum <strong>4 guests</strong>',
+                ruleParties: '<strong>No parties</strong> or events',
+                rulePets: '<strong>No pets</strong>',
+                ruleSmoking: '<strong>No smoking</strong> indoors',
+                ruleLifeVest: '<strong>Life vest required</strong> in water',
+                ruleSilence: '<strong>Quiet hours</strong> after 10 PM',
+
+                // Local Guide
+                localGuideTitle: 'Local Guide',
+                toursTitle: 'Tours',
+                tourBoat: 'Boat Tour',
+                tourBoatDesc: 'Tour around Ilha Grande, Blue Lagoon and paradise beaches.',
+                tourHiking: 'Guided Hikes',
+                tourHikingDesc: 'Explore the Atlantic Forest with expert guides.',
+                tourDiving: 'Diving',
+                tourDivingDesc: 'Discover the rich marine life of Angra.',
+                tourSailing: 'Sailing',
+                tourSailingDesc: 'Sail through the calm waters of the region.',
+
+                // Gastronomy
+                gastronomyTitle: 'Gastronomy',
+                restaurantPickup: 'Restaurants pick you up by boat! 🚤',
+                restaurantSeafood: 'Seafood specialty',
+                restaurantSophisticated: 'Sophisticated cuisine',
+
+                // Market
+                marketTitle: 'Market',
+                marketDelivery: 'Home delivery!',
+                marketWhatsApp: 'Order via host\'s WhatsApp',
+
+                // Contact
+                contactTitle: 'Contact',
+                hostLabel: 'Your host',
+                whatsappBtn: 'Chat on WhatsApp',
+                responseTime: 'Responds quickly',
+
+                // Bottom Nav
+                navHome: 'Home',
+                navRules: 'Rules',
+                navGuide: 'Guide',
+                navContact: 'Contact',
+
+                // Toast
+                toastCopied: 'Password copied!'
+            },
+            es: {
+                // Splash
+                slogan: '"Tu casa en el paraíso, sobre las aguas de Angra."',
+                enterBtn: 'Acceder a la Guía',
+
+                // Quick Access
+                wifiNetwork: '[Red de la Casa]',
+                schedules: 'Horarios',
+
+                // Navigation Buttons
+                rulesBtn: 'Reglas',
+                guideBtn: 'Guía',
+                contactBtn: 'Contacto',
+
+                // Amenities
+                amenitiesTitle: 'Comodidades',
+                amenityKitchen: 'Cocina<br>Completa',
+                amenityBBQ: 'Parri-<br>lla',
+                amenitySUP: 'SUP /<br>Kayak',
+                amenityAC: 'Aire<br>Acondicionado',
+                amenityTV: 'Smart<br>TV',
+                amenitySolar: 'Energía<br>Solar',
+
+                // Rules
+                rulesTitle: 'Reglas de la Casa',
+                ruleGuests: 'Máximo <strong>4 huéspedes</strong>',
+                ruleParties: '<strong>Sin fiestas</strong> ni eventos',
+                rulePets: '<strong>Sin mascotas</strong>',
+                ruleSmoking: '<strong>Prohibido fumar</strong> en el interior',
+                ruleLifeVest: '<strong>Chaleco salvavidas obligatorio</strong> en el agua',
+                ruleSilence: '<strong>Silencio</strong> después de las 22h',
+
+                // Local Guide
+                localGuideTitle: 'Guía Local',
+                toursTitle: 'Paseos',
+                tourBoat: 'Lancha',
+                tourBoatDesc: 'Vuelta a Ilha Grande, Laguna Azul y playas paradisíacas.',
+                tourHiking: 'Senderismo Guiado',
+                tourHikingDesc: 'Explora la Mata Atlántica con guías expertos.',
+                tourDiving: 'Buceo',
+                tourDivingDesc: 'Descubre la rica vida marina de Angra.',
+                tourSailing: 'Vela',
+                tourSailingDesc: 'Navega por las aguas tranquilas de la región.',
+
+                // Gastronomy
+                gastronomyTitle: 'Gastronomía',
+                restaurantPickup: '¡Los restaurantes te buscan en barco! 🚤',
+                restaurantSeafood: 'Especialidad en mariscos',
+                restaurantSophisticated: 'Gastronomía sofisticada',
+
+                // Market
+                marketTitle: 'Mercado',
+                marketDelivery: '¡Entrega a domicilio!',
+                marketWhatsApp: 'Pide por WhatsApp del anfitrión',
+
+                // Contact
+                contactTitle: 'Contacto',
+                hostLabel: 'Tu anfitrión',
+                whatsappBtn: 'Llamar por WhatsApp',
+                responseTime: 'Responde rápidamente',
+
+                // Bottom Nav
+                navHome: 'Inicio',
+                navRules: 'Reglas',
+                navGuide: 'Guía',
+                navContact: 'Contacto',
+
+                // Toast
+                toastCopied: '¡Contraseña copiada!'
+            }
+        };
+
+        const langData = {
+            pt: { flag: '🇧🇷', name: 'PT' },
+            en: { flag: '🇺🇸', name: 'EN' },
+            es: { flag: '🇪🇸', name: 'ES' }
+        };
+
+        // ==================== LANGUAGE FUNCTIONS ====================
+        let currentLang = localStorage.getItem('casaflutuante_lang') || 'pt';
+
+        function setLanguage(lang) {
+            currentLang = lang;
+            localStorage.setItem('casaflutuante_lang', lang);
+
+            // Update all translatable elements
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    el.innerHTML = translations[lang][key];
+                }
+            });
+
+            // Update HTML lang attribute
+            document.documentElement.lang = lang === 'pt' ? 'pt-BR' : lang === 'es' ? 'es' : 'en';
+
+            // Update language selectors
+            updateLangSelectors(lang);
+
+            // Close dropdowns
+            closeLangDropdowns();
+        }
+
+        function updateLangSelectors(lang) {
+            const data = langData[lang];
+
+            // Splash selector
+            const flagSplash = document.getElementById('currentFlagSplash');
+            const langSplash = document.getElementById('currentLangSplash');
+            if (flagSplash) flagSplash.textContent = data.flag;
+            if (langSplash) langSplash.textContent = data.name;
+
+            // Header selector
+            const flagHeader = document.getElementById('currentFlagHeader');
+            if (flagHeader) flagHeader.textContent = data.flag;
+
+            // Update active states in dropdowns
+            document.querySelectorAll('.lang-option').forEach(opt => {
+                opt.classList.remove('active');
+                if (opt.dataset.lang === lang) {
+                    opt.classList.add('active');
+                }
+            });
+        }
+
+        function toggleLangDropdown(location) {
+            const dropdown = document.getElementById(`langDropdown${location.charAt(0).toUpperCase() + location.slice(1)}`);
+            const otherLocation = location === 'splash' ? 'Header' : 'Splash';
+            const otherDropdown = document.getElementById(`langDropdown${otherLocation}`);
+
+            // Close other dropdown
+            if (otherDropdown) otherDropdown.classList.remove('show');
+
+            // Toggle current dropdown
+            dropdown.classList.toggle('show');
+        }
+
+        function closeLangDropdowns() {
+            document.querySelectorAll('.lang-dropdown').forEach(d => d.classList.remove('show'));
+        }
+
+        // Initialize language option click handlers
+        document.querySelectorAll('.lang-option').forEach(option => {
+            option.addEventListener('click', () => {
+                const lang = option.dataset.lang;
+                setLanguage(lang);
+            });
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.lang-selector')) {
+                closeLangDropdowns();
+            }
+        });
+
+        // ==================== APP FUNCTIONS ====================
         // Elements
         const splashScreen = document.getElementById('splashScreen');
         const mainApp = document.getElementById('mainApp');
@@ -628,7 +1034,7 @@
         function copyWifi() {
             const password = document.getElementById('wifiPassword').textContent;
             navigator.clipboard.writeText(password).then(() => {
-                showToast('Senha copiada!');
+                showToast(translations[currentLang].toastCopied);
             }).catch(err => {
                 // Fallback for older browsers
                 const textArea = document.createElement('textarea');
@@ -637,7 +1043,7 @@
                 textArea.select();
                 document.execCommand('copy');
                 document.body.removeChild(textArea);
-                showToast('Senha copiada!');
+                showToast(translations[currentLang].toastCopied);
             });
         }
 
@@ -705,6 +1111,12 @@
         document.addEventListener('touchmove', function (e) {
             // Allow scrolling
         }, { passive: true });
+
+        // ==================== INITIALIZE ====================
+        // Set initial language on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            setLanguage(currentLang);
+        });
     </script>
 </body>
 
