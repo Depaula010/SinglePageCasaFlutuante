@@ -289,9 +289,9 @@
     <div id="mainApp" class="hidden min-h-screen pb-24">
 
         <!-- ===== HEADER ===== -->
-        <header class="relative h-72 overflow-hidden">
+        <header class="relative h-72 md:h-96 lg:h-[500px] overflow-hidden">
             <!-- Background Image -->
-            <img src="varanda.jpeg" alt="Casa Flutuante" class="w-full h-full object-cover">
+            <img src="varanda.jpeg" alt="Casa Flutuante" class="w-full h-full object-cover object-center">
             <div class="absolute inset-0 image-overlay"></div>
 
             <!-- Language Selector on Header -->
@@ -320,13 +320,16 @@
             </div>
 
             <!-- Header Content -->
-            <div class="absolute inset-0 flex flex-col justify-end p-6 text-white">
-                <img src="image_7e0c4a.png" alt="Logo Casa Flutuante" class="w-14 h-14 rounded-xl shadow-lg mb-3">
-                <h1 class="font-title text-3xl drop-shadow-lg">Casa Flutuante Green</h1>
-                <p class="text-white/90 flex items-center gap-2 mt-1">
-                    <i class="fa-solid fa-location-dot text-sm"></i>
-                    Angra dos Reis, Ilha Grande - RJ
-                </p>
+            <div class="absolute inset-0 flex flex-col justify-end p-6 lg:p-10 text-white">
+                <div class="max-w-4xl mx-auto w-full lg:mb-6">
+                    <img src="image_7e0c4a.png" alt="Logo Casa Flutuante"
+                        class="w-14 h-14 lg:w-20 lg:h-20 rounded-xl shadow-lg mb-3">
+                    <h1 class="font-title text-3xl lg:text-5xl drop-shadow-lg">Casa Flutuante Green</h1>
+                    <p class="text-white/90 flex items-center gap-2 mt-1 lg:text-lg">
+                        <i class="fa-solid fa-location-dot text-sm"></i>
+                        Angra dos Reis, Ilha Grande - RJ
+                    </p>
+                </div>
             </div>
         </header>
 
