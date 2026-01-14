@@ -8,7 +8,7 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="theme-color" content="#314c45">
     <meta name="description"
-        content="Guia Digital do Hóspede - Casa Flutuante Angra. Sua casa no paraíso, sobre as águas de Angra.">
+        content="Guia Digital do Hóspede - Casa Flutuante Angra. Sua casa exclusiva sobre o mar de Angra.">
     <title>Casa Flutuante Angra | Guia do Hóspede</title>
 
     <!-- Tailwind CSS CDN -->
@@ -214,10 +214,9 @@
     <!-- ========== SPLASH SCREEN ========== -->
     <div id="splashScreen"
         class="splash-screen fixed inset-0 z-50 flex flex-col items-center justify-center bg-primary">
-        <!-- Background Image -->
+        <!-- Background Image Primeira Página-->
         <div class="absolute inset-0 opacity-20">
-            <img src="https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?w=1200&q=80" alt="Ocean background"
-                class="w-full h-full object-cover">
+            <img src="background.jpeg" alt="Ocean background" class="w-full h-full object-cover">
         </div>
 
         <!-- Language Selector on Splash -->
@@ -261,7 +260,7 @@
 
             <!-- Slogan -->
             <p class="text-white/80 text-lg italic mt-6 max-w-xs mx-auto" data-i18n="slogan">
-                "Sua casa no paraíso, sobre as águas de Angra."
+                "Sua casa exclusiva sobre o mar de Angra."
             </p>
 
             <!-- Enter Button -->
@@ -274,7 +273,7 @@
             <!-- Location -->
             <p class="mt-8 text-white/60 text-sm flex items-center justify-center gap-2">
                 <i class="fa-solid fa-location-dot"></i>
-                Saco do Céu, Ilha Grande
+                Angra dos Reis, Ilha Grande
             </p>
         </div>
     </div>
@@ -285,8 +284,7 @@
         <!-- ===== HEADER ===== -->
         <header class="relative h-72 overflow-hidden">
             <!-- Background Image -->
-            <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=1200&q=80" alt="Casa Flutuante"
-                class="w-full h-full object-cover">
+            <img src="varanda.jpeg" alt="Casa Flutuante" class="w-full h-full object-cover">
             <div class="absolute inset-0 image-overlay"></div>
 
             <!-- Language Selector on Header -->
@@ -317,10 +315,10 @@
             <!-- Header Content -->
             <div class="absolute inset-0 flex flex-col justify-end p-6 text-white">
                 <img src="image_7e0c4a.png" alt="Logo Casa Flutuante" class="w-14 h-14 rounded-xl shadow-lg mb-3">
-                <h1 class="font-display text-3xl font-bold drop-shadow-lg">Casa Flutuante Angra</h1>
+                <h1 class="font-display text-3xl font-bold drop-shadow-lg">Casa Flutuante Green</h1>
                 <p class="text-white/90 flex items-center gap-2 mt-1">
                     <i class="fa-solid fa-location-dot text-sm"></i>
-                    Saco do Céu, Ilha Grande - RJ
+                    Angra dos Reis, Ilha Grande - RJ
                 </p>
             </div>
         </header>
@@ -336,11 +334,11 @@
                         </div>
                         <div>
                             <p class="text-xs text-gray-500 uppercase tracking-wide">Wi-Fi Starlink</p>
-                            <p class="font-semibold text-primary" data-i18n="wifiNetwork">[Rede da Casa]</p>
+                            <p class="font-semibold text-primary" data-i18n="wifiNetwork">Casa Flutuante</p>
                         </div>
                     </div>
                     <div class="flex items-center gap-2 bg-stone-100 rounded-xl p-3">
-                        <span id="wifiPassword" class="flex-1 font-mono text-sm text-gray-700">Senha123</span>
+                        <span id="wifiPassword" class="flex-1 font-mono text-sm text-gray-700">@Flutuante1</span>
                         <button onclick="copyWifi()" class="w-9 h-9 bg-primary text-white rounded-lg flex items-center justify-center 
                                        hover:bg-primary-light active:scale-95 transition-all">
                             <i class="fa-regular fa-copy"></i>
@@ -359,11 +357,11 @@
                     <div class="space-y-2">
                         <div class="flex items-center justify-between bg-green-50 rounded-xl px-3 py-2">
                             <span class="text-sm text-gray-600">Check-in</span>
-                            <span class="font-semibold text-green-700">14:00</span>
+                            <span class="font-semibold text-green-700">10:00</span>
                         </div>
                         <div class="flex items-center justify-between bg-amber-50 rounded-xl px-3 py-2">
                             <span class="text-sm text-gray-600">Check-out</span>
-                            <span class="font-semibold text-amber-700">11:00</span>
+                            <span class="font-semibold text-amber-700">13:00</span>
                         </div>
                     </div>
                 </div>
@@ -703,11 +701,11 @@
         const translations = {
             pt: {
                 // Splash
-                slogan: '"Sua casa no paraíso, sobre as águas de Angra."',
+                slogan: '"Sua casa exclusiva sobre o mar de Angra."',
                 enterBtn: 'Acessar Guia',
 
                 // Quick Access
-                wifiNetwork: '[Rede da Casa]',
+                // wifiNetwork: 'Casa Flutuante',
                 schedules: 'Horários',
 
                 // Navigation Buttons
@@ -777,7 +775,7 @@
                 enterBtn: 'Access Guide',
 
                 // Quick Access
-                wifiNetwork: '[House Network]',
+                // wifiNetwork: '[House Network]',
                 schedules: 'Schedules',
 
                 // Navigation Buttons
@@ -847,7 +845,7 @@
                 enterBtn: 'Acceder a la Guía',
 
                 // Quick Access
-                wifiNetwork: '[Red de la Casa]',
+                // wifiNetwork: '[Red de la Casa]',
                 schedules: 'Horarios',
 
                 // Navigation Buttons
