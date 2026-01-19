@@ -213,6 +213,137 @@
         .lang-flag {
             font-size: 1.25rem;
         }
+
+        /* Photo Gallery Horizontal Scroll */
+        .photo-scroll {
+            display: flex;
+            gap: 12px;
+            overflow-x: auto;
+            padding-bottom: 8px;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .photo-scroll-item {
+            flex-shrink: 0;
+            width: 200px;
+            height: 150px;
+            overflow: hidden;
+            border-radius: 16px;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            scroll-snap-align: start;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .photo-scroll-item:hover {
+            transform: scale(1.03);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+        }
+
+        .photo-scroll-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Photo Carousel Modal */
+        .photo-modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 100;
+            background: rgba(0, 0, 0, 0.95);
+            align-items: center;
+            justify-content: center;
+        }
+
+        .photo-modal.active {
+            display: flex;
+        }
+
+        .photo-modal-content {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .photo-modal img {
+            max-width: 90%;
+            max-height: 85vh;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+
+        .photo-modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 44px;
+            height: 44px;
+            background: rgba(255, 255, 255, 0.15);
+            border: none;
+            border-radius: 50%;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s ease;
+            z-index: 10;
+        }
+
+        .photo-modal-close:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .photo-modal-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.15);
+            border: none;
+            border-radius: 50%;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s ease, transform 0.2s ease;
+            z-index: 10;
+        }
+
+        .photo-modal-nav:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .photo-modal-nav.prev {
+            left: 15px;
+        }
+
+        .photo-modal-nav.next {
+            right: 15px;
+        }
+
+        .photo-modal-counter {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            font-size: 14px;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 8px 16px;
+            border-radius: 20px;
+        }
     </style>
 </head>
 
@@ -624,18 +755,124 @@
                 </div>
             </div>
 
-            <!-- Mercado -->
+            <!-- Fotos da Casa -->
             <h3 class="text-lg font-semibold text-gray-700 mt-6 mb-3 flex items-center gap-2">
-                <i class="fa-solid fa-basket-shopping text-primary"></i>
-                <span data-i18n="marketTitle">Mercado</span>
+                <i class="fa-solid fa-camera text-primary"></i>
+                <span data-i18n="photosTitle">Fotos da Casa</span>
             </h3>
-            <div class="bg-green-50 border border-green-200 rounded-2xl p-4 flex items-center gap-4">
-                <div class="w-12 h-12 bg-green-200 rounded-xl flex items-center justify-center">
-                    <i class="fa-solid fa-truck text-green-700 text-xl"></i>
+            <div class="photo-scroll hide-scrollbar">
+                <!-- Varanda -->
+                <div class="photo-scroll-item" onclick="openPhotoModal(0)">
+                    <img src="photos/varanda (1).jpeg" alt="Varanda" loading="lazy">
                 </div>
-                <div>
-                    <p class="font-medium text-green-800" data-i18n="marketDelivery">Entrega na casa!</p>
-                    <p class="text-sm text-green-600" data-i18n="marketWhatsApp">Peça pelo WhatsApp do anfitrião</p>
+                <div class="photo-scroll-item" onclick="openPhotoModal(1)">
+                    <img src="photos/varanda (2).jpeg" alt="Varanda" loading="lazy">
+                </div>
+                <div class="photo-scroll-item" onclick="openPhotoModal(2)">
+                    <img src="photos/varanda (3).jpeg" alt="Varanda" loading="lazy">
+                </div>
+                <div class="photo-scroll-item" onclick="openPhotoModal(3)">
+                    <img src="photos/varanda (4).jpeg" alt="Varanda" loading="lazy">
+                </div>
+                <!-- Sala -->
+                <div class="photo-scroll-item" onclick="openPhotoModal(4)">
+                    <img src="photos/sala (1).jpeg" alt="Sala" loading="lazy">
+                </div>
+                <div class="photo-scroll-item" onclick="openPhotoModal(5)">
+                    <img src="photos/sala (2).jpeg" alt="Sala" loading="lazy">
+                </div>
+                <div class="photo-scroll-item" onclick="openPhotoModal(6)">
+                    <img src="photos/sala (3).jpeg" alt="Sala" loading="lazy">
+                </div>
+                <div class="photo-scroll-item" onclick="openPhotoModal(7)">
+                    <img src="photos/sala (4).jpeg" alt="Sala" loading="lazy">
+                </div>
+                <!-- Quarto -->
+                <div class="photo-scroll-item" onclick="openPhotoModal(8)">
+                    <img src="photos/quarto (1).jpeg" alt="Quarto" loading="lazy">
+                </div>
+                <div class="photo-scroll-item" onclick="openPhotoModal(9)">
+                    <img src="photos/quarto (2).jpeg" alt="Quarto" loading="lazy">
+                </div>
+                <div class="photo-scroll-item" onclick="openPhotoModal(10)">
+                    <img src="photos/quarto (3).jpeg" alt="Quarto" loading="lazy">
+                </div>
+                <div class="photo-scroll-item" onclick="openPhotoModal(11)">
+                    <img src="photos/quarto (4).jpeg" alt="Quarto" loading="lazy">
+                </div>
+                <!-- Varanda Quarto -->
+                <div class="photo-scroll-item" onclick="openPhotoModal(12)">
+                    <img src="photos/varanda_quarto (1).jpeg" alt="Varanda do Quarto" loading="lazy">
+                </div>
+                <div class="photo-scroll-item" onclick="openPhotoModal(13)">
+                    <img src="photos/varanda_quarto (2).jpeg" alt="Varanda do Quarto" loading="lazy">
+                </div>
+                <div class="photo-scroll-item" onclick="openPhotoModal(14)">
+                    <img src="photos/varanda_quarto (3).jpeg" alt="Varanda do Quarto" loading="lazy">
+                </div>
+                <div class="photo-scroll-item" onclick="openPhotoModal(15)">
+                    <img src="photos/varanda_quarto (4).jpeg" alt="Varanda do Quarto" loading="lazy">
+                </div>
+                <!-- Rooftop -->
+                <div class="photo-scroll-item" onclick="openPhotoModal(16)">
+                    <img src="photos/rooftop (1).jpeg" alt="Rooftop" loading="lazy">
+                </div>
+                <div class="photo-scroll-item" onclick="openPhotoModal(17)">
+                    <img src="photos/rooftop (2).jpeg" alt="Rooftop" loading="lazy">
+                </div>
+                <div class="photo-scroll-item" onclick="openPhotoModal(18)">
+                    <img src="photos/rooftop (3).jpeg" alt="Rooftop" loading="lazy">
+                </div>
+                <div class="photo-scroll-item" onclick="openPhotoModal(19)">
+                    <img src="photos/rooftop (4).jpeg" alt="Rooftop" loading="lazy">
+                </div>
+                <!-- Cozinha -->
+                <div class="photo-scroll-item" onclick="openPhotoModal(20)">
+                    <img src="photos/cozinha (1).jpeg" alt="Cozinha" loading="lazy">
+                </div>
+                <div class="photo-scroll-item" onclick="openPhotoModal(21)">
+                    <img src="photos/cozinha (2).jpeg" alt="Cozinha" loading="lazy">
+                </div>
+                <div class="photo-scroll-item" onclick="openPhotoModal(22)">
+                    <img src="photos/cozinha (3).jpeg" alt="Cozinha" loading="lazy">
+                </div>
+                <div class="photo-scroll-item" onclick="openPhotoModal(23)">
+                    <img src="photos/cozinha (4).jpeg" alt="Cozinha" loading="lazy">
+                </div>
+                <!-- Banheiro -->
+                <div class="photo-scroll-item" onclick="openPhotoModal(24)">
+                    <img src="photos/banheiro (1).jpeg" alt="Banheiro" loading="lazy">
+                </div>
+                <div class="photo-scroll-item" onclick="openPhotoModal(25)">
+                    <img src="photos/banheiro (2).jpeg" alt="Banheiro" loading="lazy">
+                </div>
+                <div class="photo-scroll-item" onclick="openPhotoModal(26)">
+                    <img src="photos/banheiro (3).jpeg" alt="Banheiro" loading="lazy">
+                </div>
+                <div class="photo-scroll-item" onclick="openPhotoModal(27)">
+                    <img src="photos/banheiro (4).jpeg" alt="Banheiro" loading="lazy">
+                </div>
+                <!-- Eletrodomésticos -->
+                <div class="photo-scroll-item" onclick="openPhotoModal(28)">
+                    <img src="photos/eletrodomestico (1).jpeg" alt="Eletrodoméstico" loading="lazy">
+                </div>
+                <div class="photo-scroll-item" onclick="openPhotoModal(29)">
+                    <img src="photos/eletrodomestico (2).jpeg" alt="Eletrodoméstico" loading="lazy">
+                </div>
+                <div class="photo-scroll-item" onclick="openPhotoModal(30)">
+                    <img src="photos/eletrodomestico (3).jpeg" alt="Eletrodoméstico" loading="lazy">
+                </div>
+                <div class="photo-scroll-item" onclick="openPhotoModal(31)">
+                    <img src="photos/eletrodomestico (4).jpeg" alt="Eletrodoméstico" loading="lazy">
+                </div>
+                <div class="photo-scroll-item" onclick="openPhotoModal(32)">
+                    <img src="photos/eletrodomestico (5).jpeg" alt="Eletrodoméstico" loading="lazy">
+                </div>
+                <div class="photo-scroll-item" onclick="openPhotoModal(33)">
+                    <img src="photos/eletrodomestico (6).jpeg" alt="Eletrodoméstico" loading="lazy">
+                </div>
+                <div class="photo-scroll-item" onclick="openPhotoModal(34)">
+                    <img src="photos/eletrodomestico (7).jpeg" alt="Eletrodoméstico" loading="lazy">
                 </div>
             </div>
         </section>
@@ -740,6 +977,25 @@
         </div>
     </nav>
 
+    <!-- ========== PHOTO MODAL ========== -->
+    <div id="photoModal" class="photo-modal">
+        <button class="photo-modal-close" onclick="closePhotoModal()">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+        <button class="photo-modal-nav prev" onclick="navigatePhoto(-1)">
+            <i class="fa-solid fa-chevron-left"></i>
+        </button>
+        <div class="photo-modal-content">
+            <img id="modalPhoto" src="" alt="Foto da Casa">
+        </div>
+        <button class="photo-modal-nav next" onclick="navigatePhoto(1)">
+            <i class="fa-solid fa-chevron-right"></i>
+        </button>
+        <div class="photo-modal-counter">
+            <span id="photoCounter">1 / 35</span>
+        </div>
+    </div>
+
     <!-- ========== TOAST NOTIFICATION ========== -->
     <div id="toast" class="fixed bottom-24 left-1/2 -translate-x-1/2 bg-primary text-white px-6 py-3 rounded-full 
                           shadow-xl hidden items-center gap-2 z-50">
@@ -801,10 +1057,8 @@
                 restaurantSeafood: 'Especialidade em frutos do mar',
                 restaurantSophisticated: 'Gastronomia sofisticada',
 
-                // Market
-                marketTitle: 'Mercado',
-                marketDelivery: 'Entrega na casa!',
-                marketWhatsApp: 'Peça pelo WhatsApp do anfitrião',
+                // Photos
+                photosTitle: 'Fotos da Casa',
 
                 // Contact
                 contactTitle: 'Contato',
@@ -871,16 +1125,18 @@
                 restaurantSeafood: 'Seafood specialty',
                 restaurantSophisticated: 'Sophisticated cuisine',
 
-                // Market
-                marketTitle: 'Market',
-                marketDelivery: 'Home delivery!',
-                marketWhatsApp: 'Order via host\'s WhatsApp',
+                // Photos
+                photosTitle: 'House Photos',
 
                 // Contact
                 contactTitle: 'Contact',
                 hostLabel: 'Your host',
                 whatsappBtn: 'Chat on WhatsApp',
                 responseTime: 'Responds quickly',
+                connectWith: 'Connect',
+                instagramLabel: 'Follow our daily life',
+                airbnbLabel: 'Rate your stay',
+                photoTip: 'Tag @casaflutuante.angra in your photos!',
 
                 // Bottom Nav
                 navHome: 'Home',
@@ -941,16 +1197,18 @@
                 restaurantSeafood: 'Especialidad en mariscos',
                 restaurantSophisticated: 'Gastronomía sofisticada',
 
-                // Market
-                marketTitle: 'Mercado',
-                marketDelivery: '¡Entrega a domicilio!',
-                marketWhatsApp: 'Pide por WhatsApp del anfitrión',
+                // Photos
+                photosTitle: 'Fotos de la Casa',
 
                 // Contact
                 contactTitle: 'Contacto',
                 hostLabel: 'Tu anfitrión',
                 whatsappBtn: 'Llamar por WhatsApp',
                 responseTime: 'Responde rápidamente',
+                connectWith: 'Conéctate',
+                instagramLabel: 'Sigue nuestro día a día',
+                airbnbLabel: 'Evalúa tu estancia',
+                photoTip: '¡Etiqueta @casaflutuante.angra en tus fotos!',
 
                 // Bottom Nav
                 navHome: 'Inicio',
@@ -1160,6 +1418,79 @@
         // Prevent default behavior for better app feel
         document.addEventListener('touchmove', function (e) {
             // Allow scrolling
+        }, { passive: true });
+
+        // ==================== PHOTO GALLERY ====================
+        const photoList = [
+            'photos/varanda (1).jpeg', 'photos/varanda (2).jpeg', 'photos/varanda (3).jpeg', 'photos/varanda (4).jpeg',
+            'photos/sala (1).jpeg', 'photos/sala (2).jpeg', 'photos/sala (3).jpeg', 'photos/sala (4).jpeg',
+            'photos/quarto (1).jpeg', 'photos/quarto (2).jpeg', 'photos/quarto (3).jpeg', 'photos/quarto (4).jpeg',
+            'photos/varanda_quarto (1).jpeg', 'photos/varanda_quarto (2).jpeg', 'photos/varanda_quarto (3).jpeg', 'photos/varanda_quarto (4).jpeg',
+            'photos/rooftop (1).jpeg', 'photos/rooftop (2).jpeg', 'photos/rooftop (3).jpeg', 'photos/rooftop (4).jpeg',
+            'photos/cozinha (1).jpeg', 'photos/cozinha (2).jpeg', 'photos/cozinha (3).jpeg', 'photos/cozinha (4).jpeg',
+            'photos/banheiro (1).jpeg', 'photos/banheiro (2).jpeg', 'photos/banheiro (3).jpeg', 'photos/banheiro (4).jpeg',
+            'photos/eletrodomestico (1).jpeg', 'photos/eletrodomestico (2).jpeg', 'photos/eletrodomestico (3).jpeg', 'photos/eletrodomestico (4).jpeg',
+            'photos/eletrodomestico (5).jpeg', 'photos/eletrodomestico (6).jpeg', 'photos/eletrodomestico (7).jpeg'
+        ];
+
+        let currentPhotoIndex = 0;
+        const photoModal = document.getElementById('photoModal');
+        const modalPhoto = document.getElementById('modalPhoto');
+        const photoCounter = document.getElementById('photoCounter');
+
+        function openPhotoModal(index) {
+            currentPhotoIndex = index;
+            updateModalPhoto();
+            photoModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closePhotoModal() {
+            photoModal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function navigatePhoto(direction) {
+            currentPhotoIndex += direction;
+            if (currentPhotoIndex < 0) currentPhotoIndex = photoList.length - 1;
+            if (currentPhotoIndex >= photoList.length) currentPhotoIndex = 0;
+            updateModalPhoto();
+        }
+
+        function updateModalPhoto() {
+            modalPhoto.src = photoList[currentPhotoIndex];
+            photoCounter.textContent = `${currentPhotoIndex + 1} / ${photoList.length}`;
+        }
+
+        // Close modal on background click
+        photoModal.addEventListener('click', (e) => {
+            if (e.target === photoModal || e.target.classList.contains('photo-modal-content')) {
+                closePhotoModal();
+            }
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (!photoModal.classList.contains('active')) return;
+            if (e.key === 'Escape') closePhotoModal();
+            if (e.key === 'ArrowLeft') navigatePhoto(-1);
+            if (e.key === 'ArrowRight') navigatePhoto(1);
+        });
+
+        // Touch swipe support for mobile
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        photoModal.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+
+        photoModal.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            const diff = touchStartX - touchEndX;
+            if (Math.abs(diff) > 50) {
+                navigatePhoto(diff > 0 ? 1 : -1);
+            }
         }, { passive: true });
 
         // ==================== INITIALIZE ====================
