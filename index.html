@@ -48,7 +48,7 @@
         }
 
         .font-display {
-            font-family: 'Playfair Display', serif;
+            font-family: 'Inter', sans-serif;
         }
 
         .font-title {
@@ -298,6 +298,44 @@
             }
         }
 
+        /* Amenities Navigation */
+        .amenities-container {
+            position: relative;
+        }
+
+        .amenity-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.95);
+            border: none;
+            border-radius: 50%;
+            color: #314c45;
+            font-size: 16px;
+            cursor: pointer;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+            z-index: 5;
+        }
+
+        .amenity-nav:hover {
+            background: #314c45;
+            color: white;
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .amenity-nav.prev {
+            left: -10px;
+        }
+
+        .amenity-nav.next {
+            right: -10px;
+        }
+
         /* Photo Carousel Modal */
         .photo-modal {
             display: none;
@@ -502,13 +540,13 @@
             </div>
 
             <!-- Header Content -->
-            <div class="absolute inset-0 flex flex-col justify-end p-6 lg:p-10 text-white">
-                <div class="max-w-4xl mx-auto w-full lg:mb-6">
-                    <img src="image_7e0c4a.png" alt="Logo Casa Flutuante"
-                        class="w-14 h-14 lg:w-20 lg:h-20 rounded-xl shadow-lg mb-3">
-                    <h1 class="font-title text-3xl lg:text-5xl drop-shadow-lg">Casa Flutuante Green</h1>
-                    <p class="text-white/90 flex items-center gap-2 mt-1 lg:text-lg">
-                        <i class="fa-solid fa-location-dot text-sm"></i>
+            <div class="absolute inset-0 flex flex-col justify-center items-center p-6 lg:p-10 text-white">
+                <div class="text-center -mt-4 lg:-mt-0">
+                    <img src="Logo_semfundo.png" alt="Logo Casa Flutuante"
+                        class="w-28 h-28 md:w-56 md:h-56 lg:w-72 lg:h-72 mb-2 lg:mb-4 mx-auto translate-x-1 lg:translate-x-0 drop-shadow-2xl">
+                    <h1 class="font-title text-2xl md:text-3xl lg:text-5xl drop-shadow-lg">Casa Flutuante Green</h1>
+                    <p class="text-white/90 flex items-center justify-center gap-2 mt-1 lg:mt-2 text-sm lg:text-lg">
+                        <i class="fa-solid fa-location-dot text-xs lg:text-sm"></i>
                         Angra dos Reis, Ilha Grande - RJ
                     </p>
                 </div>
@@ -530,7 +568,7 @@
                         </div>
                     </div>
                     <div class="flex items-center gap-2 bg-stone-100 rounded-xl p-3">
-                        <span id="wifiPassword" class="flex-1 font-mono text-sm text-gray-700">@Flutuante1</span>
+                        <span id="wifiPassword" class="flex-1 text-sm text-gray-700">@Flutuante1</span>
                         <button onclick="copyWifi()" class="w-9 h-9 bg-primary text-white rounded-lg flex items-center justify-center 
                                        hover:bg-primary-light active:scale-95 transition-all">
                             <i class="fa-regular fa-copy"></i>
@@ -565,24 +603,24 @@
             <div class="grid grid-cols-3 gap-3">
                 <button onclick="scrollToSection('regras')"
                     class="card-hover bg-white rounded-2xl p-5 shadow-md border border-stone-100 text-center">
-                    <div class="w-12 h-12 bg-red-50 rounded-2xl flex items-center justify-center mx-auto mb-3">
-                        <i class="fa-solid fa-clipboard-list text-red-500 text-xl"></i>
+                    <div class="w-12 h-12 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-3">
+                        <i class="fa-solid fa-clipboard-list text-primary text-xl"></i>
                     </div>
                     <span class="font-medium text-gray-700 text-sm" data-i18n="rulesBtn">Regras</span>
                 </button>
 
                 <button onclick="scrollToSection('guia')"
                     class="card-hover bg-white rounded-2xl p-5 shadow-md border border-stone-100 text-center">
-                    <div class="w-12 h-12 bg-blue-50 rounded-2xl flex items-center justify-center mx-auto mb-3">
-                        <i class="fa-solid fa-map-location-dot text-blue-500 text-xl"></i>
+                    <div class="w-12 h-12 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-3">
+                        <i class="fa-solid fa-map-location-dot text-primary text-xl"></i>
                     </div>
                     <span class="font-medium text-gray-700 text-sm" data-i18n="guideBtn">Guia</span>
                 </button>
 
                 <button onclick="scrollToSection('contato')"
                     class="card-hover bg-white rounded-2xl p-5 shadow-md border border-stone-100 text-center">
-                    <div class="w-12 h-12 bg-green-50 rounded-2xl flex items-center justify-center mx-auto mb-3">
-                        <i class="fa-brands fa-whatsapp text-green-500 text-xl"></i>
+                    <div class="w-12 h-12 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-3">
+                        <i class="fa-brands fa-whatsapp text-primary text-xl"></i>
                     </div>
                     <span class="font-medium text-gray-700 text-sm" data-i18n="contactBtn">Contato</span>
                 </button>
@@ -593,36 +631,169 @@
         <section class="px-4 mt-8">
             <h2 class="font-display text-2xl font-semibold text-primary mb-4" data-i18n="amenitiesTitle">Comodidades
             </h2>
-            <div class="flex gap-3 overflow-x-auto hide-scrollbar pb-2">
-                <div
-                    class="flex-shrink-0 bg-white rounded-2xl px-5 py-4 shadow-md border border-stone-100 text-center min-w-[100px]">
-                    <i class="fa-solid fa-utensils text-primary text-2xl mb-2"></i>
-                    <p class="text-xs text-gray-600" data-i18n="amenityKitchen">Cozinha<br>Completa</p>
+            <div class="amenities-container relative">
+                <button class="amenity-nav prev hidden md:flex" onclick="scrollAmenities(-1)">
+                    <i class="fa-solid fa-chevron-left"></i>
+                </button>
+                <div id="amenitiesScroll" class="flex gap-3 overflow-x-auto hide-scrollbar pb-2 scroll-smooth">
+                    <!-- Jacuzzi -->
+                    <div
+                        class="flex-shrink-0 bg-white rounded-2xl px-5 py-4 shadow-md border border-stone-100 text-center min-w-[100px]">
+                        <i class="fa-solid fa-hot-tub-person text-primary text-2xl mb-2"></i>
+                        <p class="text-xs text-gray-600" data-i18n="amenityJacuzzi">Jacuzzi</p>
+                    </div>
+                    <!-- Vista para o Mar -->
+                    <div
+                        class="flex-shrink-0 bg-white rounded-2xl px-5 py-4 shadow-md border border-stone-100 text-center min-w-[100px]">
+                        <i class="fa-solid fa-water text-primary text-2xl mb-2"></i>
+                        <p class="text-xs text-gray-600" data-i18n="amenitySeaView">Vista<br>para o Mar</p>
+                    </div>
+                    <!-- Acesso à Praia -->
+                    <div
+                        class="flex-shrink-0 bg-white rounded-2xl px-5 py-4 shadow-md border border-stone-100 text-center min-w-[100px]">
+                        <i class="fa-solid fa-umbrella-beach text-primary text-2xl mb-2"></i>
+                        <p class="text-xs text-gray-600" data-i18n="amenityBeach">Acesso<br>à Praia</p>
+                    </div>
+                    <!-- Cozinha Completa -->
+                    <div
+                        class="flex-shrink-0 bg-white rounded-2xl px-5 py-4 shadow-md border border-stone-100 text-center min-w-[100px]">
+                        <i class="fa-solid fa-utensils text-primary text-2xl mb-2"></i>
+                        <p class="text-xs text-gray-600" data-i18n="amenityKitchen">Cozinha<br>Completa</p>
+                    </div>
+                    <!-- Churrasqueira -->
+                    <div
+                        class="flex-shrink-0 bg-white rounded-2xl px-5 py-4 shadow-md border border-stone-100 text-center min-w-[100px]">
+                        <i class="fa-solid fa-fire text-primary text-2xl mb-2"></i>
+                        <p class="text-xs text-gray-600" data-i18n="amenityBBQ">Churras-<br>queira</p>
+                    </div>
+                    <!-- Caiaque -->
+                    <div
+                        class="flex-shrink-0 bg-white rounded-2xl px-5 py-4 shadow-md border border-stone-100 text-center min-w-[100px]">
+                        <i class="fa-solid fa-sailboat text-primary text-2xl mb-2"></i>
+                        <p class="text-xs text-gray-600" data-i18n="amenityKayak">Caiaque</p>
+                    </div>
+                    <!-- Ar Condicionado -->
+                    <div
+                        class="flex-shrink-0 bg-white rounded-2xl px-5 py-4 shadow-md border border-stone-100 text-center min-w-[100px]">
+                        <i class="fa-solid fa-snowflake text-primary text-2xl mb-2"></i>
+                        <p class="text-xs text-gray-600" data-i18n="amenityAC">Ar<br>Condicionado</p>
+                    </div>
+                    <!-- Smart TV -->
+                    <div
+                        class="flex-shrink-0 bg-white rounded-2xl px-5 py-4 shadow-md border border-stone-100 text-center min-w-[100px]">
+                        <i class="fa-solid fa-tv text-primary text-2xl mb-2"></i>
+                        <p class="text-xs text-gray-600" data-i18n="amenityTV">Smart TV<br>Streaming</p>
+                    </div>
+                    <!-- Wi-Fi -->
+                    <div
+                        class="flex-shrink-0 bg-white rounded-2xl px-5 py-4 shadow-md border border-stone-100 text-center min-w-[100px]">
+                        <i class="fa-solid fa-wifi text-primary text-2xl mb-2"></i>
+                        <p class="text-xs text-gray-600" data-i18n="amenityWifi">Wi-Fi<br>Starlink</p>
+                    </div>
+                    <!-- Banheira -->
+                    <div
+                        class="flex-shrink-0 bg-white rounded-2xl px-5 py-4 shadow-md border border-stone-100 text-center min-w-[100px]">
+                        <i class="fa-solid fa-bath text-primary text-2xl mb-2"></i>
+                        <p class="text-xs text-gray-600" data-i18n="amenityBathtub">Banheira</p>
+                    </div>
+                    <!-- Varanda Privativa -->
+                    <div
+                        class="flex-shrink-0 bg-white rounded-2xl px-5 py-4 shadow-md border border-stone-100 text-center min-w-[100px]">
+                        <i class="fa-solid fa-door-open text-primary text-2xl mb-2"></i>
+                        <p class="text-xs text-gray-600" data-i18n="amenityBalcony">Varanda<br>Privativa</p>
+                    </div>
+                    <!-- Água Quente -->
+                    <div
+                        class="flex-shrink-0 bg-white rounded-2xl px-5 py-4 shadow-md border border-stone-100 text-center min-w-[100px]">
+                        <i class="fa-solid fa-temperature-high text-primary text-2xl mb-2"></i>
+                        <p class="text-xs text-gray-600" data-i18n="amenityHotWater">Água<br>Quente</p>
+                    </div>
+                    <!-- Estacionamento -->
+                    <div
+                        class="flex-shrink-0 bg-white rounded-2xl px-5 py-4 shadow-md border border-stone-100 text-center min-w-[100px]">
+                        <i class="fa-solid fa-square-parking text-primary text-2xl mb-2"></i>
+                        <p class="text-xs text-gray-600" data-i18n="amenityParking">Estaciona-<br>mento</p>
+                    </div>
+                    <!-- Roupa de Cama -->
+                    <div
+                        class="flex-shrink-0 bg-white rounded-2xl px-5 py-4 shadow-md border border-stone-100 text-center min-w-[100px]">
+                        <i class="fa-solid fa-bed text-primary text-2xl mb-2"></i>
+                        <p class="text-xs text-gray-600" data-i18n="amenityBedding">Roupa<br>de Cama</p>
+                    </div>
+                    <!-- Extintor -->
+                    <div
+                        class="flex-shrink-0 bg-white rounded-2xl px-5 py-4 shadow-md border border-stone-100 text-center min-w-[100px]">
+                        <i class="fa-solid fa-fire-extinguisher text-primary text-2xl mb-2"></i>
+                        <p class="text-xs text-gray-600" data-i18n="amenityExtinguisher">Extintor</p>
+                    </div>
+                    <!-- Primeiros Socorros -->
+                    <div
+                        class="flex-shrink-0 bg-white rounded-2xl px-5 py-4 shadow-md border border-stone-100 text-center min-w-[100px]">
+                        <i class="fa-solid fa-kit-medical text-primary text-2xl mb-2"></i>
+                        <p class="text-xs text-gray-600" data-i18n="amenityFirstAid">Primeiros<br>Socorros</p>
+                    </div>
                 </div>
-                <div
-                    class="flex-shrink-0 bg-white rounded-2xl px-5 py-4 shadow-md border border-stone-100 text-center min-w-[100px]">
-                    <i class="fa-solid fa-fire text-primary text-2xl mb-2"></i>
-                    <p class="text-xs text-gray-600" data-i18n="amenityBBQ">Churras-<br>queira</p>
+                <button class="amenity-nav next hidden md:flex" onclick="scrollAmenities(1)">
+                    <i class="fa-solid fa-chevron-right"></i>
+                </button>
+            </div>
+        </section>
+
+        <!-- ===== UTENSÍLIOS DOMÉSTICOS ===== -->
+        <section class="px-4 mt-8">
+            <h2 class="font-display text-2xl font-semibold text-primary mb-4 flex items-center gap-3">
+                <i class="fa-solid fa-blender text-primary"></i>
+                <span data-i18n="appliancesTitle">Utensílios Domésticos</span>
+            </h2>
+            <div class="bg-white rounded-2xl shadow-lg border border-stone-100 overflow-hidden">
+                <!-- Chaleira Elétrica -->
+                <div class="flex items-center gap-4 p-4 border-b border-stone-100">
+                    <div class="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                        <i class="fa-solid fa-mug-hot text-primary"></i>
+                    </div>
+                    <p class="text-gray-700" data-i18n="applianceKettle">Chaleira Elétrica</p>
                 </div>
-                <div
-                    class="flex-shrink-0 bg-white rounded-2xl px-5 py-4 shadow-md border border-stone-100 text-center min-w-[100px]">
-                    <i class="fa-solid fa-person-swimming text-primary text-2xl mb-2"></i>
-                    <p class="text-xs text-gray-600" data-i18n="amenitySUP">SUP /<br>Caiaque</p>
+                <!-- Cafeteira -->
+                <div class="flex items-center gap-4 p-4 border-b border-stone-100">
+                    <div class="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                        <i class="fa-solid fa-coffee text-primary"></i>
+                    </div>
+                    <p class="text-gray-700" data-i18n="applianceCoffee">Cafeteira</p>
                 </div>
-                <div
-                    class="flex-shrink-0 bg-white rounded-2xl px-5 py-4 shadow-md border border-stone-100 text-center min-w-[100px]">
-                    <i class="fa-solid fa-snowflake text-primary text-2xl mb-2"></i>
-                    <p class="text-xs text-gray-600" data-i18n="amenityAC">Ar<br>Condicionado</p>
+                <!-- Geladeira -->
+                <div class="flex items-center gap-4 p-4 border-b border-stone-100">
+                    <div class="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                        <i class="fa-solid fa-temperature-low text-primary"></i>
+                    </div>
+                    <p class="text-gray-700" data-i18n="applianceFridge">Geladeira</p>
                 </div>
-                <div
-                    class="flex-shrink-0 bg-white rounded-2xl px-5 py-4 shadow-md border border-stone-100 text-center min-w-[100px]">
-                    <i class="fa-solid fa-tv text-primary text-2xl mb-2"></i>
-                    <p class="text-xs text-gray-600" data-i18n="amenityTV">Smart<br>TV</p>
+                <!-- Air Fryer -->
+                <div class="flex items-center gap-4 p-4 border-b border-stone-100">
+                    <div class="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                        <i class="fa-solid fa-wind text-primary"></i>
+                    </div>
+                    <p class="text-gray-700" data-i18n="applianceAirFryer">Air Fryer</p>
                 </div>
-                <div
-                    class="flex-shrink-0 bg-white rounded-2xl px-5 py-4 shadow-md border border-stone-100 text-center min-w-[100px]">
-                    <i class="fa-solid fa-solar-panel text-primary text-2xl mb-2"></i>
-                    <p class="text-xs text-gray-600" data-i18n="amenitySolar">Energia<br>Solar</p>
+                <!-- Liquidificador -->
+                <div class="flex items-center gap-4 p-4 border-b border-stone-100">
+                    <div class="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                        <i class="fa-solid fa-blender text-primary"></i>
+                    </div>
+                    <p class="text-gray-700" data-i18n="applianceBlender">Liquidificador</p>
+                </div>
+                <!-- Sanduicheira -->
+                <div class="flex items-center gap-4 p-4 border-b border-stone-100">
+                    <div class="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                        <i class="fa-solid fa-burger text-primary"></i>
+                    </div>
+                    <p class="text-gray-700" data-i18n="applianceSandwich">Sanduicheira</p>
+                </div>
+                <!-- Fogão de Indução -->
+                <div class="flex items-center gap-4 p-4">
+                    <div class="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                        <i class="fa-solid fa-fire-burner text-primary"></i>
+                    </div>
+                    <p class="text-gray-700" data-i18n="applianceStove">Fogão de Indução 4 bocas</p>
                 </div>
             </div>
         </section>
@@ -630,52 +801,61 @@
         <!-- ===== REGRAS ===== -->
         <section id="regras" class="px-4 mt-10 scroll-mt-4">
             <h2 class="font-display text-2xl font-semibold text-primary mb-4 flex items-center gap-3">
-                <i class="fa-solid fa-clipboard-list text-red-500"></i>
+                <i class="fa-solid fa-clipboard-list text-primary"></i>
                 <span data-i18n="rulesTitle">Regras da Casa</span>
             </h2>
             <div class="bg-white rounded-2xl shadow-lg border border-stone-100 overflow-hidden">
                 <!-- Rule items -->
                 <div class="flex items-center gap-4 p-4 border-b border-stone-100">
-                    <div class="w-10 h-10 bg-amber-100 rounded-xl flex items-center justify-center flex-shrink-0">
-                        <i class="fa-solid fa-users text-amber-600"></i>
+                    <div class="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                        <i class="fa-solid fa-users text-primary"></i>
                     </div>
                     <p class="text-gray-700" data-i18n="ruleGuests">Máximo <strong>4 hóspedes</strong></p>
                 </div>
 
                 <div class="flex items-center gap-4 p-4 border-b border-stone-100">
-                    <div class="w-10 h-10 bg-red-100 rounded-xl flex items-center justify-center flex-shrink-0">
-                        <i class="fa-solid fa-champagne-glasses text-red-600"></i>
+                    <div class="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                        <i class="fa-solid fa-champagne-glasses text-primary"></i>
                     </div>
                     <p class="text-gray-700" data-i18n="ruleParties"><strong>Sem festas</strong> ou eventos</p>
                 </div>
 
                 <div class="flex items-center gap-4 p-4 border-b border-stone-100">
-                    <div class="w-10 h-10 bg-orange-100 rounded-xl flex items-center justify-center flex-shrink-0">
-                        <i class="fa-solid fa-paw text-orange-600"></i>
+                    <div class="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                        <i class="fa-solid fa-paw text-primary"></i>
                     </div>
                     <p class="text-gray-700" data-i18n="rulePets"><strong>Sem pets</strong></p>
                 </div>
 
                 <div class="flex items-center gap-4 p-4 border-b border-stone-100">
-                    <div class="w-10 h-10 bg-gray-100 rounded-xl flex items-center justify-center flex-shrink-0">
-                        <i class="fa-solid fa-ban-smoking text-gray-600"></i>
+                    <div class="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                        <i class="fa-solid fa-ban-smoking text-primary"></i>
                     </div>
                     <p class="text-gray-700" data-i18n="ruleSmoking"><strong>Proibido fumar</strong> na área interna</p>
                 </div>
 
-                <div class="flex items-center gap-4 p-4 border-b border-stone-100 bg-blue-50">
-                    <div class="w-10 h-10 bg-blue-200 rounded-xl flex items-center justify-center flex-shrink-0">
-                        <i class="fa-solid fa-life-ring text-blue-700"></i>
+                <div class="flex items-center gap-4 p-4 border-b border-stone-100 bg-primary/10">
+                    <div class="w-10 h-10 bg-primary rounded-xl flex items-center justify-center flex-shrink-0">
+                        <i class="fa-solid fa-life-ring text-white"></i>
                     </div>
-                    <p class="text-blue-900" data-i18n="ruleLifeVest"><strong>Obrigatório colete salva-vidas</strong> na
+                    <p class="text-primary font-medium" data-i18n="ruleLifeVest"><strong>Obrigatório colete
+                            salva-vidas</strong> na
                         água</p>
                 </div>
 
-                <div class="flex items-center gap-4 p-4">
-                    <div class="w-10 h-10 bg-purple-100 rounded-xl flex items-center justify-center flex-shrink-0">
-                        <i class="fa-solid fa-moon text-purple-600"></i>
+                <div class="flex items-center gap-4 p-4 border-b border-stone-100">
+                    <div class="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                        <i class="fa-solid fa-moon text-primary"></i>
                     </div>
                     <p class="text-gray-700" data-i18n="ruleSilence"><strong>Silêncio</strong> após as 22h</p>
+                </div>
+
+                <div class="flex items-center gap-4 p-4">
+                    <div class="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                        <i class="fa-solid fa-plug text-primary"></i>
+                    </div>
+                    <p class="text-gray-700" data-i18n="ruleVoltage"><strong>Energia 220V</strong> - traga adaptador se
+                        necessário</p>
                 </div>
             </div>
         </section>
@@ -683,7 +863,7 @@
         <!-- ===== GUIA LOCAL ===== -->
         <section id="guia" class="px-4 mt-10 scroll-mt-4">
             <h2 class="font-display text-2xl font-semibold text-primary mb-4 flex items-center gap-3">
-                <i class="fa-solid fa-map-location-dot text-blue-500"></i>
+                <i class="fa-solid fa-map-location-dot text-primary"></i>
                 <span data-i18n="localGuideTitle">Guia Local</span>
             </h2>
 
@@ -939,7 +1119,7 @@
         <!-- ===== CONTATO ===== -->
         <section id="contato" class="px-4 mt-10 mb-8 scroll-mt-4">
             <h2 class="font-display text-2xl font-semibold text-primary mb-4 flex items-center gap-3">
-                <i class="fa-solid fa-address-book text-green-500"></i>
+                <i class="fa-solid fa-address-book text-primary"></i>
                 <span data-i18n="contactTitle">Contato</span>
             </h2>
 
@@ -971,8 +1151,8 @@
                     <div class="flex-1 h-px bg-stone-200"></div>
                 </div>
 
-                <!-- CTAs Secundários: Instagram e Airbnb -->
-                <div class="grid grid-cols-2 gap-3">
+                <!-- CTAs Secundários: Instagram, Airbnb e Google Review -->
+                <div class="grid grid-cols-3 gap-3">
                     <!-- Instagram -->
                     <a href="https://www.instagram.com/casaflutuante.angra" target="_blank" class="group flex flex-col items-center gap-2 p-4 rounded-xl border-2 border-stone-200 
                               hover:border-pink-400 hover:bg-pink-50 transition-all duration-300 active:scale-95">
@@ -981,7 +1161,8 @@
                                     flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                             <i class="fa-brands fa-instagram text-white text-xl"></i>
                         </div>
-                        <span class="text-sm font-medium text-gray-700 group-hover:text-pink-600 transition-colors"
+                        <span
+                            class="text-xs font-medium text-gray-700 group-hover:text-pink-600 transition-colors text-center"
                             data-i18n="instagramLabel">Siga nosso dia a dia</span>
                     </a>
 
@@ -993,8 +1174,22 @@
                                     flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                             <i class="fa-brands fa-airbnb text-white text-xl"></i>
                         </div>
-                        <span class="text-sm font-medium text-gray-700 group-hover:text-rose-600 transition-colors"
-                            data-i18n="airbnbLabel">Avalie nossa estadia</span>
+                        <span
+                            class="text-xs font-medium text-gray-700 group-hover:text-rose-600 transition-colors text-center"
+                            data-i18n="airbnbLabel">Reserve aqui</span>
+                    </a>
+
+                    <!-- Google Review -->
+                    <a href="https://g.page/r/CUAY9Znr_Bp-EAE/review" target="_blank" class="group flex flex-col items-center gap-2 p-4 rounded-xl border-2 border-stone-200 
+                              hover:border-blue-400 hover:bg-blue-50 transition-all duration-300 active:scale-95">
+                        <div
+                            class="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 via-green-500 to-yellow-500 
+                                    flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                            <i class="fa-solid fa-star text-white text-xl"></i>
+                        </div>
+                        <span
+                            class="text-xs font-medium text-gray-700 group-hover:text-blue-600 transition-colors text-center"
+                            data-i18n="googleReviewLabel">Avalie no Google</span>
                     </a>
                 </div>
 
@@ -1082,12 +1277,32 @@
 
                 // Amenities
                 amenitiesTitle: 'Comodidades',
+                amenityJacuzzi: 'Jacuzzi',
+                amenitySeaView: 'Vista<br>para o Mar',
+                amenityBeach: 'Acesso<br>à Praia',
                 amenityKitchen: 'Cozinha<br>Completa',
                 amenityBBQ: 'Churras-<br>queira',
-                amenitySUP: 'SUP /<br>Caiaque',
+                amenityKayak: 'Caiaque',
                 amenityAC: 'Ar<br>Condicionado',
-                amenityTV: 'Smart<br>TV',
-                amenitySolar: 'Energia<br>Solar',
+                amenityTV: 'Smart TV<br>Streaming',
+                amenityWifi: 'Wi-Fi<br>Starlink',
+                amenityBathtub: 'Banheira',
+                amenityBalcony: 'Varanda<br>Privativa',
+                amenityHotWater: 'Água<br>Quente',
+                amenityParking: 'Estaciona-<br>mento',
+                amenityBedding: 'Roupa<br>de Cama',
+                amenityExtinguisher: 'Extintor',
+                amenityFirstAid: 'Primeiros<br>Socorros',
+
+                // Appliances
+                appliancesTitle: 'Utensílios Domésticos',
+                applianceKettle: 'Chaleira Elétrica',
+                applianceCoffee: 'Cafeteira',
+                applianceFridge: 'Geladeira',
+                applianceAirFryer: 'Air Fryer',
+                applianceBlender: 'Liquidificador',
+                applianceSandwich: 'Sanduicheira',
+                applianceStove: 'Fogão de Indução 4 bocas',
 
                 // Rules
                 rulesTitle: 'Regras da Casa',
@@ -1097,6 +1312,7 @@
                 ruleSmoking: '<strong>Proibido fumar</strong> na área interna',
                 ruleLifeVest: '<strong>Obrigatório colete salva-vidas</strong> na água',
                 ruleSilence: '<strong>Silêncio</strong> após as 22h',
+                ruleVoltage: '<strong>Energia 220V</strong> - traga adaptador se necessário',
 
                 // Local Guide
                 localGuideTitle: 'Guia Local',
@@ -1124,6 +1340,11 @@
                 hostLabel: 'Seu anfitrião',
                 whatsappBtn: 'Chamar no WhatsApp',
                 responseTime: 'Responde rapidamente',
+                connectWith: 'Conecte-se',
+                instagramLabel: 'Siga nosso dia a dia',
+                airbnbLabel: 'Reserve aqui',
+                googleReviewLabel: 'Avalie no Google',
+                photoTip: 'Marque @casaflutuante.angra nas suas fotos!',
 
                 // Bottom Nav
                 navHome: 'Início',
@@ -1150,12 +1371,32 @@
 
                 // Amenities
                 amenitiesTitle: 'Amenities',
+                amenityJacuzzi: 'Jacuzzi',
+                amenitySeaView: 'Sea<br>View',
+                amenityBeach: 'Beach<br>Access',
                 amenityKitchen: 'Full<br>Kitchen',
                 amenityBBQ: 'BBQ<br>Grill',
-                amenitySUP: 'SUP /<br>Kayak',
+                amenityKayak: 'Kayak',
                 amenityAC: 'Air<br>Conditioning',
-                amenityTV: 'Smart<br>TV',
-                amenitySolar: 'Solar<br>Energy',
+                amenityTV: 'Smart TV<br>Streaming',
+                amenityWifi: 'Wi-Fi<br>Starlink',
+                amenityBathtub: 'Bathtub',
+                amenityBalcony: 'Private<br>Balcony',
+                amenityHotWater: 'Hot<br>Water',
+                amenityParking: 'Parking',
+                amenityBedding: 'Bed<br>Linens',
+                amenityExtinguisher: 'Fire<br>Extinguisher',
+                amenityFirstAid: 'First Aid<br>Kit',
+
+                // Appliances
+                appliancesTitle: 'Kitchen Appliances',
+                applianceKettle: 'Electric Kettle',
+                applianceCoffee: 'Coffee Maker',
+                applianceFridge: 'Refrigerator',
+                applianceAirFryer: 'Air Fryer',
+                applianceBlender: 'Blender',
+                applianceSandwich: 'Sandwich Maker',
+                applianceStove: '4-Burner Induction Stove',
 
                 // Rules
                 rulesTitle: 'House Rules',
@@ -1165,6 +1406,7 @@
                 ruleSmoking: '<strong>No smoking</strong> indoors',
                 ruleLifeVest: '<strong>Life vest required</strong> in water',
                 ruleSilence: '<strong>Quiet hours</strong> after 10 PM',
+                ruleVoltage: '<strong>220V Power</strong> - bring adapter if needed',
 
                 // Local Guide
                 localGuideTitle: 'Local Guide',
@@ -1194,7 +1436,8 @@
                 responseTime: 'Responds quickly',
                 connectWith: 'Connect',
                 instagramLabel: 'Follow our daily life',
-                airbnbLabel: 'Rate your stay',
+                airbnbLabel: 'Book here',
+                googleReviewLabel: 'Review on Google',
                 photoTip: 'Tag @casaflutuante.angra in your photos!',
 
                 // Bottom Nav
@@ -1222,12 +1465,32 @@
 
                 // Amenities
                 amenitiesTitle: 'Comodidades',
+                amenityJacuzzi: 'Jacuzzi',
+                amenitySeaView: 'Vista<br>al Mar',
+                amenityBeach: 'Acceso<br>a Playa',
                 amenityKitchen: 'Cocina<br>Completa',
                 amenityBBQ: 'Parri-<br>lla',
-                amenitySUP: 'SUP /<br>Kayak',
+                amenityKayak: 'Kayak',
                 amenityAC: 'Aire<br>Acondicionado',
-                amenityTV: 'Smart<br>TV',
-                amenitySolar: 'Energía<br>Solar',
+                amenityTV: 'Smart TV<br>Streaming',
+                amenityWifi: 'Wi-Fi<br>Starlink',
+                amenityBathtub: 'Bañera',
+                amenityBalcony: 'Balcón<br>Privado',
+                amenityHotWater: 'Agua<br>Caliente',
+                amenityParking: 'Estaciona-<br>miento',
+                amenityBedding: 'Ropa<br>de Cama',
+                amenityExtinguisher: 'Extintor',
+                amenityFirstAid: 'Primeros<br>Auxilios',
+
+                // Appliances
+                appliancesTitle: 'Electrodomésticos',
+                applianceKettle: 'Hervidor Eléctrico',
+                applianceCoffee: 'Cafetera',
+                applianceFridge: 'Refrigerador',
+                applianceAirFryer: 'Freidora de Aire',
+                applianceBlender: 'Licuadora',
+                applianceSandwich: 'Sandwichera',
+                applianceStove: 'Estufa de Inducción 4 quemadores',
 
                 // Rules
                 rulesTitle: 'Reglas de la Casa',
@@ -1237,6 +1500,7 @@
                 ruleSmoking: '<strong>Prohibido fumar</strong> en el interior',
                 ruleLifeVest: '<strong>Chaleco salvavidas obligatorio</strong> en el agua',
                 ruleSilence: '<strong>Silencio</strong> después de las 22h',
+                ruleVoltage: '<strong>Energía 220V</strong> - traiga adaptador si es necesario',
 
                 // Local Guide
                 localGuideTitle: 'Guía Local',
@@ -1266,7 +1530,8 @@
                 responseTime: 'Responde rápidamente',
                 connectWith: 'Conéctate',
                 instagramLabel: 'Sigue nuestro día a día',
-                airbnbLabel: 'Evalúa tu estancia',
+                airbnbLabel: 'Reserva aquí',
+                googleReviewLabel: 'Opina en Google',
                 photoTip: '¡Etiqueta @casaflutuante.angra en tus fotos!',
 
                 // Bottom Nav
@@ -1437,6 +1702,13 @@
         // Scroll to Top
         function scrollToTop() {
             window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Scroll Amenities
+        function scrollAmenities(direction) {
+            const amenitiesScroll = document.getElementById('amenitiesScroll');
+            const scrollAmount = 330; // width of ~3 cards + gap
+            amenitiesScroll.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
         }
 
         // Update bottom nav active state on scroll
