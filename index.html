@@ -612,9 +612,9 @@
 
                 <div class="relative flex items-center gap-4">
                     <!-- Logo Blue -->
-                    <div class="flex-shrink-0">
+                    <div class="flex-shrink-0 w-16 h-16 rounded-xl shadow-lg border-2 border-white/30 overflow-hidden">
                         <img src="src/logos/casa_flutuante_blue.jpeg" alt="Casa Flutuante Blue"
-                            class="w-16 h-16 rounded-xl shadow-lg border-2 border-white/30 object-cover">
+                            class="w-full h-full object-cover scale-125">
                     </div>
 
                     <!-- Content -->
@@ -918,8 +918,7 @@
                 <!-- Card Lancha -->
                 <div class="flex-shrink-0 w-64 bg-white rounded-2xl shadow-lg overflow-hidden card-hover">
                     <div class="relative h-36">
-                        <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=600&q=80"
-                            alt="Passeio de Lancha" class="w-full h-full object-cover">
+                        <img src="src/passeios/lancha.png" alt="Passeio de Lancha" class="w-full h-full object-cover">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                         <span class="absolute bottom-3 left-3 text-white font-semibold"
                             data-i18n="tourBoat">Lancha</span>
@@ -975,8 +974,7 @@
                 <!-- Card Vela -->
                 <div class="flex-shrink-0 w-64 bg-white rounded-2xl shadow-lg overflow-hidden card-hover">
                     <div class="relative h-36">
-                        <img src="https://images.unsplash.com/photo-1534190760961-74e8c1c5c3da?w=600&q=80" alt="Vela"
-                            class="w-full h-full object-cover">
+                        <img src="src/passeios/vela.png" alt="Vela" class="w-full h-full object-cover">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                         <span class="absolute bottom-3 left-3 text-white font-semibold"
                             data-i18n="tourSailing">Vela</span>
@@ -1259,7 +1257,7 @@
 
     <!-- ========== BOTTOM NAVIGATION ========== -->
     <nav id="bottomNav" class="hidden fixed bottom-0 left-0 right-0 glass border-t border-stone-200 bottom-nav z-40">
-        <div class="flex items-center justify-center gap-6 py-2">
+        <div class="w-full max-w-md mx-auto flex items-center justify-around py-2">
             <button onclick="scrollToTop()" class="flex flex-col items-center py-2 px-4 text-primary">
                 <i class="fa-solid fa-house text-xl"></i>
                 <span class="text-xs mt-1 font-medium" data-i18n="navHome">Início</span>
