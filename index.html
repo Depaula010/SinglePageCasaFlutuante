@@ -599,6 +599,47 @@
             </div>
         </section>
 
+        <!-- ===== COMING SOON BANNER - CASA FLUTUANTE BLUE ===== -->
+        <section class="px-4 mt-6">
+            <div
+                class="relative overflow-hidden bg-gradient-to-r from-blue-500 via-blue-600 to-cyan-500 rounded-2xl shadow-xl p-5">
+                <!-- Decorative elements -->
+                <div class="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/2">
+                </div>
+                <div
+                    class="absolute bottom-0 left-0 w-24 h-24 bg-white/10 rounded-full translate-y-1/2 -translate-x-1/2">
+                </div>
+
+                <div class="relative flex items-center gap-4">
+                    <!-- Logo Blue -->
+                    <div class="flex-shrink-0">
+                        <img src="src/logos/casa_flutuante_blue.jpeg" alt="Casa Flutuante Blue"
+                            class="w-16 h-16 rounded-xl shadow-lg border-2 border-white/30 object-cover">
+                    </div>
+
+                    <!-- Content -->
+                    <div class="flex-1">
+                        <div class="flex items-center gap-2 mb-1">
+                            <span
+                                class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-white/20 text-white backdrop-blur-sm">
+                                <i class="fa-solid fa-sparkles mr-1"></i>
+                                Em breve
+                            </span>
+                        </div>
+                        <h3 class="text-white font-bold text-lg leading-tight" data-i18n="comingSoonBlue">Nova Casa
+                            Flutuante Blue</h3>
+                        <p class="text-white/80 text-sm mt-0.5" data-i18n="comingSoonBlueDesc">Uma nova experiência
+                            sobre o mar</p>
+                    </div>
+
+                    <!-- Wave animation icon -->
+                    <div class="flex-shrink-0 hidden sm:block">
+                        <i class="fa-solid fa-water text-white/30 text-4xl"></i>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- ===== NAVIGATION BUTTONS ===== -->
         <section class="px-4 mt-6">
             <div class="grid grid-cols-3 gap-3">
@@ -892,8 +933,7 @@
                 <!-- Card Trilhas -->
                 <div class="flex-shrink-0 w-64 bg-white rounded-2xl shadow-lg overflow-hidden card-hover">
                     <div class="relative h-36">
-                        <img src="https://images.unsplash.com/photo-1551632811-561732d1e306?w=600&q=80" alt="Trilhas"
-                            class="w-full h-full object-cover">
+                        <img src="src/passeios/trilha.jpeg" alt="Trilhas" class="w-full h-full object-cover">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                         <span class="absolute bottom-3 left-3 text-white font-semibold" data-i18n="tourHiking">Trilhas
                             Guiadas</span>
@@ -907,8 +947,7 @@
                 <!-- Card Mergulho -->
                 <div class="flex-shrink-0 w-64 bg-white rounded-2xl shadow-lg overflow-hidden card-hover">
                     <div class="relative h-36">
-                        <img src="https://images.unsplash.com/photo-1544551763-77ef2d0cfc6c?w=600&q=80" alt="Mergulho"
-                            class="w-full h-full object-cover">
+                        <img src="src/passeios/mergulho.jpeg" alt="Mergulho" class="w-full h-full object-cover">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                         <span class="absolute bottom-3 left-3 text-white font-semibold"
                             data-i18n="tourDiving">Mergulho</span>
@@ -916,6 +955,20 @@
                     <div class="p-4">
                         <p class="text-sm text-gray-600" data-i18n="tourDivingDesc">Descubra a rica vida marinha de
                             Angra.</p>
+                    </div>
+                </div>
+
+                <!-- Card Jetski -->
+                <div class="flex-shrink-0 w-64 bg-white rounded-2xl shadow-lg overflow-hidden card-hover">
+                    <div class="relative h-36">
+                        <img src="src/passeios/jetski.jpeg" alt="Locação de Jetski" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                        <span class="absolute bottom-3 left-3 text-white font-semibold" data-i18n="tourJetski">Locação
+                            de Jetski</span>
+                    </div>
+                    <div class="p-4">
+                        <p class="text-sm text-gray-600" data-i18n="tourJetskiDesc">Aventure-se nas águas cristalinas
+                            de Angra.</p>
                     </div>
                 </div>
 
@@ -1206,7 +1259,7 @@
 
     <!-- ========== BOTTOM NAVIGATION ========== -->
     <nav id="bottomNav" class="hidden fixed bottom-0 left-0 right-0 glass border-t border-stone-200 bottom-nav z-40">
-        <div class="flex items-center justify-around py-2">
+        <div class="flex items-center justify-center gap-6 py-2">
             <button onclick="scrollToTop()" class="flex flex-col items-center py-2 px-4 text-primary">
                 <i class="fa-solid fa-house text-xl"></i>
                 <span class="text-xs mt-1 font-medium" data-i18n="navHome">Início</span>
@@ -1326,6 +1379,12 @@
                 tourDivingDesc: 'Descubra a rica vida marinha de Angra.',
                 tourSailing: 'Vela',
                 tourSailingDesc: 'Navegue pelas águas calmas da região.',
+                tourJetski: 'Locação de Jetski',
+                tourJetskiDesc: 'Aventure-se nas águas cristalinas de Angra.',
+
+                // Coming Soon Banner
+                comingSoonBlue: 'Nova Casa Flutuante Blue',
+                comingSoonBlueDesc: 'Uma nova experiência sobre o mar',
 
                 // Gastronomy
                 gastronomyTitle: 'Gastronomia',
@@ -1420,6 +1479,12 @@
                 tourDivingDesc: 'Discover the rich marine life of Angra.',
                 tourSailing: 'Sailing',
                 tourSailingDesc: 'Sail through the calm waters of the region.',
+                tourJetski: 'Jetski Rental',
+                tourJetskiDesc: 'Adventure through the crystal clear waters of Angra.',
+
+                // Coming Soon Banner
+                comingSoonBlue: 'New Blue Floating House',
+                comingSoonBlueDesc: 'A new experience over the sea',
 
                 // Gastronomy
                 gastronomyTitle: 'Gastronomy',
@@ -1514,6 +1579,12 @@
                 tourDivingDesc: 'Descubre la rica vida marina de Angra.',
                 tourSailing: 'Vela',
                 tourSailingDesc: 'Navega por las aguas tranquilas de la región.',
+                tourJetski: 'Alquiler de Jetski',
+                tourJetskiDesc: 'Aventúrate en las aguas cristalinas de Angra.',
+
+                // Coming Soon Banner
+                comingSoonBlue: 'Nueva Casa Flotante Blue',
+                comingSoonBlueDesc: 'Una nueva experiencia sobre el mar',
 
                 // Gastronomy
                 gastronomyTitle: 'Gastronomía',
