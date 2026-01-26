@@ -19,12 +19,7 @@
 
     <!-- Preload LCP Critical Images -->
     <link rel="preload" as="image" href="src/imagens/background_opt.webp" type="image/webp">
-    <link rel="preload" as="image" href="src/logos/image_7e0c4a_opt.webp" type="image/webp">
-
-    <!-- Preload Critical Font (Josefin Sans for title) -->
-    <link rel="preload" as="font" type="font/woff2"
-        href="https://fonts.gstatic.com/s/josefinsans/v32/Qw3PZQNVED7rKGKxtqIqX5E-AVSJrOCfjY46_DjQbMZhKSbpUVzEEQ.woff2"
-        crossorigin>
+    <link rel="preload" as="image" href="src/logos/image_7e0c4a_retina.webp" type="image/webp">
 
     <!-- CRITICAL CSS - Inline for instant splash screen render -->
     <style>
@@ -806,7 +801,11 @@
                     class="flex items-center gap-2 bg-white/20 hover:bg-white/30 backdrop-blur-md text-white px-4 py-2 rounded-full transition-all duration-300">
                     <span id="currentFlagSplash" class="lang-flag">🇧🇷</span>
                     <span id="currentLangSplash" class="text-sm font-medium">PT</span>
-                    <i class="fa-solid fa-chevron-down text-xs"></i>
+                    <!-- Chevron Down Icon -->
+                    <svg class="icon-svg icon-svg-sm" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z" />
+                    </svg>
                 </button>
                 <div id="langDropdownSplash" class="lang-dropdown">
                     <div class="lang-option active" data-lang="pt">
@@ -829,7 +828,7 @@
         <div class="relative z-10 text-center px-8">
             <!-- Logo (LCP Critical Element) -->
             <div class="mb-8">
-                <img src="src/logos/image_7e0c4a_opt.webp" alt="Logo Casa Flutuante"
+                <img src="src/logos/image_7e0c4a_retina.webp" alt="Logo Casa Flutuante"
                     class="w-40 h-40 mx-auto rounded-2xl shadow-2xl" width="160" height="160" fetchpriority="high"
                     decoding="sync">
             </div>
@@ -848,13 +847,21 @@
             <!-- Enter Button -->
             <button id="enterBtn" class="pulse-btn mt-12 px-10 py-4 bg-white text-primary font-semibold text-lg rounded-full 
                            shadow-xl hover:bg-stone-100 transition-all duration-300 flex items-center gap-3 mx-auto">
-                <i class="fa-solid fa-compass"></i>
+                <!-- Compass Icon -->
+                <svg class="icon-svg" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M256 0c141.4 0 256 114.6 256 256S397.4 512 256 512 0 397.4 0 256 114.6 0 256 0zm0 144c-22.3 0-42.3 6.9-58.9 18.7l-45.4-85.1C184.8 59.7 219.2 48 256 48c114.9 0 208 93.1 208 208 0 36.8-11.7 71.2-29.6 104.3l-85.1-45.4c11.8-16.6 18.7-36.6 18.7-58.9 0-61.9-50.1-112-112-112zm-73.6 57.1l111.9 209.7c3.2 6.1 1.9 13.6-3.2 18-5.1 4.4-12.7 4.1-17.5-1.1L156.9 202.2c-3.2-6.1-1.9-13.6 3.2-18 5.1-4.4 12.7-4.1 17.5 1.1zM48 256c0 114.9 93.1 208 208 208 36.8 0 71.2-11.7 104.3-29.6l-45.4-85.1c-16.6 11.8-36.6 18.7-58.9 18.7-61.9 0-112-50.1-112-112 0-22.3 6.9-42.3 18.7-58.9l-85.1-45.4C59.7 184.8 48 219.2 48 256z" />
+                </svg>
                 <span data-i18n="enterBtn">Acessar Guia</span>
             </button>
 
             <!-- Location -->
             <p class="mt-8 text-white/60 text-sm flex items-center justify-center gap-2">
-                <i class="fa-solid fa-location-dot"></i>
+                <!-- Location Dot Icon -->
+                <svg class="icon-svg" viewBox="0 0 384 512" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 128a64 64 0 1 1 0 128 64 64 0 1 1 0-128z" />
+                </svg>
                 Angra dos Reis, Ilha Grande
             </p>
         </div>
