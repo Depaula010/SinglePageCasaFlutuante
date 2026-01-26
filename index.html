@@ -18,8 +18,8 @@
     <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
 
     <!-- Preload LCP Critical Images (Splash Screen) -->
-    <link rel="preload" as="image" href="src/imagens/background.webp" fetchpriority="high">
-    <link rel="preload" as="image" href="src/logos/image_7e0c4a.webp" fetchpriority="high">
+    <link rel="preload" as="image" href="src/imagens/background_opt.webp" fetchpriority="high">
+    <link rel="preload" as="image" href="src/logos/image_7e0c4a_opt.webp" fetchpriority="high">
 
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -38,7 +38,7 @@
     </script>
 
     <!-- Preload Hero Image for mainApp (secondary priority) -->
-    <link rel="preload" as="image" href="src/imagens/varanda.webp">
+    <link rel="preload" as="image" href="src/imagens/varanda_opt.webp">
 
     <!-- FontAwesome CDN (deferred to avoid render-blocking) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
@@ -458,7 +458,7 @@
         class="splash-screen fixed inset-0 z-50 flex flex-col items-center justify-center bg-primary">
         <!-- Background Image Splash (LCP Critical) -->
         <div class="absolute inset-0 opacity-20">
-            <img src="src/imagens/background.webp" alt="Ocean background" class="w-full h-full object-cover"
+            <img src="src/imagens/background_opt.webp" alt="Ocean background" class="w-full h-full object-cover"
                 fetchpriority="high" decoding="async">
         </div>
 
@@ -492,7 +492,7 @@
         <div class="relative z-10 text-center px-8">
             <!-- Logo (LCP Critical Element) -->
             <div class="mb-8">
-                <img src="src/logos/image_7e0c4a.webp" alt="Logo Casa Flutuante"
+                <img src="src/logos/image_7e0c4a_opt.webp" alt="Logo Casa Flutuante"
                     class="w-40 h-40 mx-auto rounded-2xl shadow-2xl" width="160" height="160" fetchpriority="high"
                     decoding="sync">
             </div>
@@ -529,8 +529,8 @@
         <!-- ===== HEADER ===== -->
         <header class="relative h-72 md:h-96 lg:h-[500px] overflow-hidden">
             <!-- Background Image (LCP Element) -->
-            <img src="src/imagens/varanda.webp" alt="Casa Flutuante" class="w-full h-full object-cover object-center"
-                fetchpriority="high" decoding="async">
+            <img src="src/imagens/varanda_opt.webp" alt="Casa Flutuante"
+                class="w-full h-full object-cover object-center" fetchpriority="high" decoding="async">
             <div class="absolute inset-0 image-overlay"></div>
 
             <!-- Language Selector on Header -->
