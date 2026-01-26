@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=5">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="theme-color" content="#314c45">
@@ -27,8 +27,12 @@
         }
     </script>
 
-    <!-- FontAwesome CDN -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Preload LCP Hero Image -->
+    <link rel="preload" as="image" href="src/imagens/varanda.jpeg" fetchpriority="high">
+
+    <!-- FontAwesome CDN (deferred to avoid render-blocking) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        media="print" onload="this.media='all'">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -443,7 +447,8 @@
         class="splash-screen fixed inset-0 z-50 flex flex-col items-center justify-center bg-primary">
         <!-- Background Image Primeira Página-->
         <div class="absolute inset-0 opacity-20">
-            <img src="src/imagens/background.jpeg" alt="Ocean background" class="w-full h-full object-cover">
+            <img src="src/imagens/background.jpeg" alt="Ocean background" class="w-full h-full object-cover"
+                loading="lazy" decoding="async">
         </div>
 
         <!-- Language Selector on Splash -->
@@ -477,7 +482,8 @@
             <!-- Logo Placeholder -->
             <div class="mb-8">
                 <img src="src/logos/image_7e0c4a.png" alt="Logo Casa Flutuante"
-                    class="w-40 h-40 mx-auto rounded-2xl shadow-2xl">
+                    class="w-40 h-40 mx-auto rounded-2xl shadow-2xl" width="160" height="160" loading="lazy"
+                    decoding="async">
             </div>
 
             <!-- Title -->
@@ -511,8 +517,9 @@
 
         <!-- ===== HEADER ===== -->
         <header class="relative h-72 md:h-96 lg:h-[500px] overflow-hidden">
-            <!-- Background Image -->
-            <img src="src/imagens/varanda.jpeg" alt="Casa Flutuante" class="w-full h-full object-cover object-center">
+            <!-- Background Image (LCP Element) -->
+            <img src="src/imagens/varanda.jpeg" alt="Casa Flutuante" class="w-full h-full object-cover object-center"
+                fetchpriority="high" decoding="async">
             <div class="absolute inset-0 image-overlay"></div>
 
             <!-- Language Selector on Header -->
@@ -544,7 +551,8 @@
             <div class="absolute inset-0 flex flex-col justify-center items-center p-6 lg:p-10 text-white">
                 <div class="text-center mt-0 lg:-mt-20">
                     <img src="src/logos/logo_semfundo.png" alt="Logo Casa Flutuante"
-                        class="w-24 h-24 md:w-48 md:h-48 lg:w-64 lg:h-64 mb-2 lg:mb-4 mx-auto translate-x-px lg:translate-x-0 drop-shadow-2xl">
+                        class="w-24 h-24 md:w-48 md:h-48 lg:w-64 lg:h-64 mb-2 lg:mb-4 mx-auto translate-x-px lg:translate-x-0 drop-shadow-2xl"
+                        width="96" height="96" loading="lazy" decoding="async">
                     <h1 class="font-title text-2xl md:text-3xl lg:text-5xl drop-shadow-lg">Casa Flutuante Green</h1>
                     <p class="text-white/90 flex items-center justify-center gap-2 mt-1 lg:mt-2 text-sm lg:text-lg">
                         <i class="fa-solid fa-location-dot text-xs lg:text-sm"></i>
@@ -614,7 +622,7 @@
                     <!-- Logo Blue - Estilo App Icon -->
                     <div class="flex-shrink-0 w-20 h-20 rounded-2xl border-4 border-white shadow-xl overflow-hidden">
                         <img src="src/logos/casa_flutuante_blue.jpeg" alt="Casa Flutuante Blue"
-                            class="w-full h-full object-cover">
+                            class="w-full h-full object-cover" width="80" height="80" loading="lazy" decoding="async">
                     </div>
 
                     <!-- Content -->
@@ -918,7 +926,8 @@
                 <!-- Card Lancha -->
                 <div class="flex-shrink-0 w-64 bg-white rounded-2xl shadow-lg overflow-hidden card-hover">
                     <div class="relative h-36">
-                        <img src="src/passeios/lancha.png" alt="Passeio de Lancha" class="w-full h-full object-cover">
+                        <img src="src/passeios/lancha.png" alt="Passeio de Lancha" class="w-full h-full object-cover"
+                            width="256" height="144" loading="lazy" decoding="async">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                         <span class="absolute bottom-3 left-3 text-white font-semibold"
                             data-i18n="tourBoat">Lancha</span>
@@ -932,7 +941,8 @@
                 <!-- Card Trilhas -->
                 <div class="flex-shrink-0 w-64 bg-white rounded-2xl shadow-lg overflow-hidden card-hover">
                     <div class="relative h-36">
-                        <img src="src/passeios/trilha.jpeg" alt="Trilhas" class="w-full h-full object-cover">
+                        <img src="src/passeios/trilha.jpeg" alt="Trilhas" class="w-full h-full object-cover" width="256"
+                            height="144" loading="lazy" decoding="async">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                         <span class="absolute bottom-3 left-3 text-white font-semibold" data-i18n="tourHiking">Trilhas
                             Guiadas</span>
@@ -946,7 +956,8 @@
                 <!-- Card Mergulho -->
                 <div class="flex-shrink-0 w-64 bg-white rounded-2xl shadow-lg overflow-hidden card-hover">
                     <div class="relative h-36">
-                        <img src="src/passeios/mergulho.jpeg" alt="Mergulho" class="w-full h-full object-cover">
+                        <img src="src/passeios/mergulho.jpeg" alt="Mergulho" class="w-full h-full object-cover"
+                            width="256" height="144" loading="lazy" decoding="async">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                         <span class="absolute bottom-3 left-3 text-white font-semibold"
                             data-i18n="tourDiving">Mergulho</span>
@@ -960,7 +971,8 @@
                 <!-- Card Jetski -->
                 <div class="flex-shrink-0 w-64 bg-white rounded-2xl shadow-lg overflow-hidden card-hover">
                     <div class="relative h-36">
-                        <img src="src/passeios/jetski.jpeg" alt="Locação de Jetski" class="w-full h-full object-cover">
+                        <img src="src/passeios/jetski.jpeg" alt="Locação de Jetski" class="w-full h-full object-cover"
+                            width="256" height="144" loading="lazy" decoding="async">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                         <span class="absolute bottom-3 left-3 text-white font-semibold" data-i18n="tourJetski">Locação
                             de Jetski</span>
@@ -974,7 +986,8 @@
                 <!-- Card Vela -->
                 <div class="flex-shrink-0 w-64 bg-white rounded-2xl shadow-lg overflow-hidden card-hover">
                     <div class="relative h-36">
-                        <img src="src/passeios/vela.png" alt="Vela" class="w-full h-full object-cover">
+                        <img src="src/passeios/vela.png" alt="Vela" class="w-full h-full object-cover" width="256"
+                            height="144" loading="lazy" decoding="async">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                         <span class="absolute bottom-3 left-3 text-white font-semibold"
                             data-i18n="tourSailing">Vela</span>
@@ -997,7 +1010,8 @@
                 <div class="bg-white rounded-2xl shadow-md p-4 flex items-center gap-4 card-hover">
                     <div class="w-16 h-16 rounded-xl overflow-hidden flex-shrink-0">
                         <img src="https://images.unsplash.com/photo-1579631542720-3a87824fff86?w=200&q=80"
-                            alt="Reis & Magos" class="w-full h-full object-cover">
+                            alt="Reis & Magos" class="w-full h-full object-cover" width="64" height="64" loading="lazy"
+                            decoding="async">
                     </div>
                     <div>
                         <h4 class="font-semibold text-gray-800">Reis & Magos</h4>
@@ -1026,94 +1040,122 @@
                 <div id="photoScroll" class="photo-scroll hide-scrollbar">
                     <!-- Varanda -->
                     <div class="photo-scroll-item" onclick="openPhotoModal(0)">
-                        <img src="src/photos/varanda (1).jpeg" alt="Varanda" loading="lazy">
+                        <img src="src/photos/varanda (1).jpeg" alt="Varanda" width="200" height="150" loading="lazy"
+                            decoding="async">
                     </div>
                     <div class="photo-scroll-item" onclick="openPhotoModal(1)">
-                        <img src="src/photos/varanda (2).jpeg" alt="Varanda" loading="lazy">
+                        <img src="src/photos/varanda (2).jpeg" alt="Varanda" width="200" height="150" loading="lazy"
+                            decoding="async">
                     </div>
                     <div class="photo-scroll-item" onclick="openPhotoModal(2)">
-                        <img src="src/photos/varanda (3).jpeg" alt="Varanda" loading="lazy">
+                        <img src="src/photos/varanda (3).jpeg" alt="Varanda" width="200" height="150" loading="lazy"
+                            decoding="async">
                     </div>
                     <div class="photo-scroll-item" onclick="openPhotoModal(3)">
-                        <img src="src/photos/varanda (4).jpeg" alt="Varanda" loading="lazy">
+                        <img src="src/photos/varanda (4).jpeg" alt="Varanda" width="200" height="150" loading="lazy"
+                            decoding="async">
                     </div>
                     <!-- Sala -->
                     <div class="photo-scroll-item" onclick="openPhotoModal(4)">
-                        <img src="src/photos/sala (1).jpeg" alt="Sala" loading="lazy">
+                        <img src="src/photos/sala (1).jpeg" alt="Sala" width="200" height="150" loading="lazy"
+                            decoding="async">
                     </div>
                     <div class="photo-scroll-item" onclick="openPhotoModal(5)">
-                        <img src="src/photos/sala (2).jpeg" alt="Sala" loading="lazy">
+                        <img src="src/photos/sala (2).jpeg" alt="Sala" width="200" height="150" loading="lazy"
+                            decoding="async">
                     </div>
                     <div class="photo-scroll-item" onclick="openPhotoModal(6)">
-                        <img src="src/photos/sala (3).jpeg" alt="Sala" loading="lazy">
+                        <img src="src/photos/sala (3).jpeg" alt="Sala" width="200" height="150" loading="lazy"
+                            decoding="async">
                     </div>
                     <div class="photo-scroll-item" onclick="openPhotoModal(7)">
-                        <img src="src/photos/sala (4).jpeg" alt="Sala" loading="lazy">
+                        <img src="src/photos/sala (4).jpeg" alt="Sala" width="200" height="150" loading="lazy"
+                            decoding="async">
                     </div>
                     <!-- Quarto -->
                     <div class="photo-scroll-item" onclick="openPhotoModal(8)">
-                        <img src="src/photos/quarto (1).jpeg" alt="Quarto" loading="lazy">
+                        <img src="src/photos/quarto (1).jpeg" alt="Quarto" width="200" height="150" loading="lazy"
+                            decoding="async">
                     </div>
                     <div class="photo-scroll-item" onclick="openPhotoModal(9)">
-                        <img src="src/photos/quarto (2).jpeg" alt="Quarto" loading="lazy">
+                        <img src="src/photos/quarto (2).jpeg" alt="Quarto" width="200" height="150" loading="lazy"
+                            decoding="async">
                     </div>
                     <div class="photo-scroll-item" onclick="openPhotoModal(10)">
-                        <img src="src/photos/quarto (3).jpeg" alt="Quarto" loading="lazy">
+                        <img src="src/photos/quarto (3).jpeg" alt="Quarto" width="200" height="150" loading="lazy"
+                            decoding="async">
                     </div>
                     <div class="photo-scroll-item" onclick="openPhotoModal(11)">
-                        <img src="src/photos/quarto (4).jpeg" alt="Quarto" loading="lazy">
+                        <img src="src/photos/quarto (4).jpeg" alt="Quarto" width="200" height="150" loading="lazy"
+                            decoding="async">
                     </div>
                     <!-- Varanda Quarto -->
                     <div class="photo-scroll-item" onclick="openPhotoModal(12)">
-                        <img src="src/photos/varanda_quarto (1).jpeg" alt="Varanda do Quarto" loading="lazy">
+                        <img src="src/photos/varanda_quarto (1).jpeg" alt="Varanda do Quarto" width="200" height="150"
+                            loading="lazy" decoding="async">
                     </div>
                     <div class="photo-scroll-item" onclick="openPhotoModal(13)">
-                        <img src="src/photos/varanda_quarto (2).jpeg" alt="Varanda do Quarto" loading="lazy">
+                        <img src="src/photos/varanda_quarto (2).jpeg" alt="Varanda do Quarto" width="200" height="150"
+                            loading="lazy" decoding="async">
                     </div>
                     <div class="photo-scroll-item" onclick="openPhotoModal(14)">
-                        <img src="src/photos/varanda_quarto (3).jpeg" alt="Varanda do Quarto" loading="lazy">
+                        <img src="src/photos/varanda_quarto (3).jpeg" alt="Varanda do Quarto" width="200" height="150"
+                            loading="lazy" decoding="async">
                     </div>
                     <div class="photo-scroll-item" onclick="openPhotoModal(15)">
-                        <img src="src/photos/varanda_quarto (4).jpeg" alt="Varanda do Quarto" loading="lazy">
+                        <img src="src/photos/varanda_quarto (4).jpeg" alt="Varanda do Quarto" width="200" height="150"
+                            loading="lazy" decoding="async">
                     </div>
                     <!-- Rooftop -->
                     <div class="photo-scroll-item" onclick="openPhotoModal(16)">
-                        <img src="src/photos/rooftop (1).jpeg" alt="Rooftop" loading="lazy">
+                        <img src="src/photos/rooftop (1).jpeg" alt="Rooftop" width="200" height="150" loading="lazy"
+                            decoding="async">
                     </div>
                     <div class="photo-scroll-item" onclick="openPhotoModal(17)">
-                        <img src="src/photos/rooftop (2).jpeg" alt="Rooftop" loading="lazy">
+                        <img src="src/photos/rooftop (2).jpeg" alt="Rooftop" width="200" height="150" loading="lazy"
+                            decoding="async">
                     </div>
                     <div class="photo-scroll-item" onclick="openPhotoModal(18)">
-                        <img src="src/photos/rooftop (3).jpeg" alt="Rooftop" loading="lazy">
+                        <img src="src/photos/rooftop (3).jpeg" alt="Rooftop" width="200" height="150" loading="lazy"
+                            decoding="async">
                     </div>
                     <div class="photo-scroll-item" onclick="openPhotoModal(19)">
-                        <img src="src/photos/rooftop (4).jpeg" alt="Rooftop" loading="lazy">
+                        <img src="src/photos/rooftop (4).jpeg" alt="Rooftop" width="200" height="150" loading="lazy"
+                            decoding="async">
                     </div>
                     <!-- Cozinha -->
                     <div class="photo-scroll-item" onclick="openPhotoModal(20)">
-                        <img src="src/photos/cozinha (1).jpeg" alt="Cozinha" loading="lazy">
+                        <img src="src/photos/cozinha (1).jpeg" alt="Cozinha" width="200" height="150" loading="lazy"
+                            decoding="async">
                     </div>
                     <div class="photo-scroll-item" onclick="openPhotoModal(21)">
-                        <img src="src/photos/cozinha (2).jpeg" alt="Cozinha" loading="lazy">
+                        <img src="src/photos/cozinha (2).jpeg" alt="Cozinha" width="200" height="150" loading="lazy"
+                            decoding="async">
                     </div>
                     <div class="photo-scroll-item" onclick="openPhotoModal(22)">
-                        <img src="src/photos/cozinha (3).jpeg" alt="Cozinha" loading="lazy">
+                        <img src="src/photos/cozinha (3).jpeg" alt="Cozinha" width="200" height="150" loading="lazy"
+                            decoding="async">
                     </div>
                     <div class="photo-scroll-item" onclick="openPhotoModal(23)">
-                        <img src="src/photos/cozinha (4).jpeg" alt="Cozinha" loading="lazy">
+                        <img src="src/photos/cozinha (4).jpeg" alt="Cozinha" width="200" height="150" loading="lazy"
+                            decoding="async">
                     </div>
                     <!-- Banheiro -->
                     <div class="photo-scroll-item" onclick="openPhotoModal(24)">
-                        <img src="src/photos/banheiro (1).jpeg" alt="Banheiro" loading="lazy">
+                        <img src="src/photos/banheiro (1).jpeg" alt="Banheiro" width="200" height="150" loading="lazy"
+                            decoding="async">
                     </div>
                     <div class="photo-scroll-item" onclick="openPhotoModal(25)">
-                        <img src="src/photos/banheiro (2).jpeg" alt="Banheiro" loading="lazy">
+                        <img src="src/photos/banheiro (2).jpeg" alt="Banheiro" width="200" height="150" loading="lazy"
+                            decoding="async">
                     </div>
                     <div class="photo-scroll-item" onclick="openPhotoModal(26)">
-                        <img src="src/photos/banheiro (3).jpeg" alt="Banheiro" loading="lazy">
+                        <img src="src/photos/banheiro (3).jpeg" alt="Banheiro" width="200" height="150" loading="lazy"
+                            decoding="async">
                     </div>
                     <div class="photo-scroll-item" onclick="openPhotoModal(27)">
-                        <img src="src/photos/banheiro (4).jpeg" alt="Banheiro" loading="lazy">
+                        <img src="src/photos/banheiro (4).jpeg" alt="Banheiro" width="200" height="150" loading="lazy"
+                            decoding="async">
                     </div>
                 </div>
                 <button class="photo-gallery-nav next" onclick="scrollGallery(1)">
