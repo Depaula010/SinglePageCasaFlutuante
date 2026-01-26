@@ -11,6 +11,16 @@
         content="Guia Digital do Hóspede - Casa Flutuante Green. Sua casa exclusiva sobre o mar de Angra.">
     <title>Casa Flutuante Green | Guia do Hóspede</title>
 
+    <!-- Preconnect to CDNs for faster resource loading -->
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+
+    <!-- Preload LCP Critical Images (Splash Screen) -->
+    <link rel="preload" as="image" href="src/imagens/background.jpeg" fetchpriority="high">
+    <link rel="preload" as="image" href="src/logos/image_7e0c4a.png" fetchpriority="high">
+
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -27,16 +37,17 @@
         }
     </script>
 
-    <!-- Preload LCP Hero Image -->
-    <link rel="preload" as="image" href="src/imagens/varanda.jpeg" fetchpriority="high">
+    <!-- Preload Hero Image for mainApp (secondary priority) -->
+    <link rel="preload" as="image" href="src/imagens/varanda.jpeg">
 
     <!-- FontAwesome CDN (deferred to avoid render-blocking) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
         media="print" onload="this.media='all'">
+    <noscript>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    </noscript>
 
     <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&family=Josefin+Sans:ital,wght@0,300;1,300&display=swap"
         rel="stylesheet">
@@ -445,10 +456,10 @@
     <!-- ========== SPLASH SCREEN ========== -->
     <div id="splashScreen"
         class="splash-screen fixed inset-0 z-50 flex flex-col items-center justify-center bg-primary">
-        <!-- Background Image Primeira Página-->
+        <!-- Background Image Splash (LCP Critical) -->
         <div class="absolute inset-0 opacity-20">
             <img src="src/imagens/background.jpeg" alt="Ocean background" class="w-full h-full object-cover"
-                loading="lazy" decoding="async">
+                fetchpriority="high" decoding="async">
         </div>
 
         <!-- Language Selector on Splash -->
@@ -479,11 +490,11 @@
 
         <!-- Content -->
         <div class="relative z-10 text-center px-8">
-            <!-- Logo Placeholder -->
+            <!-- Logo (LCP Critical Element) -->
             <div class="mb-8">
                 <img src="src/logos/image_7e0c4a.png" alt="Logo Casa Flutuante"
-                    class="w-40 h-40 mx-auto rounded-2xl shadow-2xl" width="160" height="160" loading="lazy"
-                    decoding="async">
+                    class="w-40 h-40 mx-auto rounded-2xl shadow-2xl" width="160" height="160" fetchpriority="high"
+                    decoding="sync">
             </div>
 
             <!-- Title -->
